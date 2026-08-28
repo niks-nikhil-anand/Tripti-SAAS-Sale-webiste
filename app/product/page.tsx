@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
 import { capabilities, comparison, integrations, securityPoints } from "@/lib/product";
+import { catalog } from "@/lib/catalog";
 import {
   breadcrumbList,
+  catalogJsonLd,
   graph,
   jsonLdScript,
   pageMetadata,
@@ -14,6 +16,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ArrowRightIcon, CheckIcon } from "@/components/ui/Icons";
 import { AppPreview } from "@/components/sections/AppPreview";
+import { ProductCatalog } from "@/components/product/ProductCatalog";
 
 const trail = [
   { name: "Home", path: "/" },
@@ -21,13 +24,17 @@ const trail = [
 ];
 
 export const metadata: Metadata = pageMetadata({
-  title: "Warehouse-native product analytics",
+  title: "Products — the full Stackpilot line",
   description:
-    "How Stackpilot resolves plain-English questions to reviewed metrics, syncs with dbt, and answers funnels, retention and cohorts from your warehouse.",
+    "All eight Stackpilot products: analytics, metrics layer, AI copilot, cohorts, alerting, warehouse sync, governance and embedded. Pricing on every card.",
   path: "/product",
 });
 
-const jsonLd = graph(softwareApplication, breadcrumbList(trail));
+const jsonLd = graph(
+  softwareApplication,
+  catalogJsonLd(catalog),
+  breadcrumbList(trail),
+);
 
 export default function ProductPage() {
   return (
@@ -40,8 +47,8 @@ export default function ProductPage() {
       <PageHeader
         trail={trail}
         eyebrow="Product"
-        title="Every answer traceable to a definition someone reviewed"
-        description="Stackpilot is four things that only work together: a metrics layer in version control, a query engine that keeps warehouse costs sane, explorers for the questions product teams actually ask, and a language interface that is not allowed to improvise."
+        title="Eight products, one governed metrics layer"
+        description="Every Stackpilot product reads the same reviewed definitions, so the number you see in a dashboard, an alert and an embedded chart is the same number. Buy the pieces you need."
       >
         <div className="mt-4 flex flex-col gap-3 sm:flex-row">
           <Button as="a" href="/checkout?plan=growth">
@@ -58,13 +65,35 @@ export default function ProductPage() {
         <AppPreview />
       </Container>
 
-      {/* Capability deep-dives, alternating sides. */}
-      <section aria-labelledby="capabilities-heading" className="pb-8">
+      {/* Product catalog */}
+      <section
+        id="catalog"
+        aria-labelledby="catalog-heading"
+        className="scroll-mt-24 border-y border-border bg-bg-subtle py-20 sm:py-24"
+      >
         <Container>
-          <h2 id="capabilities-heading" className="sr-only">
-            Capabilities
-          </h2>
-          <div className="flex flex-col gap-20">
+          <SectionHeading
+            id="catalog-heading"
+            eyebrow="Catalog"
+            title="The whole product line"
+            description="Start with any one of them. They share the metrics layer, so adding a second product means no second implementation."
+          />
+          <div className="mt-12">
+            <ProductCatalog />
+          </div>
+        </Container>
+      </section>
+
+      {/* Capability deep-dives, alternating sides. */}
+      <section aria-labelledby="capabilities-heading" className="py-20 sm:py-24">
+        <Container>
+          <SectionHeading
+            id="capabilities-heading"
+            eyebrow="How they work together"
+            title="Four capabilities every product is built on"
+            description="However many products you buy, these are the mechanics underneath — which is why the second one takes an afternoon rather than a quarter."
+          />
+          <div className="mt-16 flex flex-col gap-20">
             {capabilities.map((cap, i) => (
               <article
                 key={cap.id}
