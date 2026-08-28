@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { faqs, plans, siteConfig } from "./site";
 import type { Post } from "./blog";
+import type { CatalogProduct } from "./catalog";
 
 /**
  * `JSON.stringify` does not escape `<`, so a stray "</script>" inside any copy
@@ -209,6 +210,47 @@ export function blogJsonLd(posts: Post[]) {
       url: absoluteUrl(`/blog/${post.slug}`),
       datePublished: post.publishedAt,
       author: { "@type": "Person", name: post.author.name },
+    })),
+  };
+}
+
+/**
+ * ItemList of Products for the /product catalog. Prices come from the same
+ * `catalog` array the cards render from, so the structured data cannot drift
+ * from what a visitor sees — which is exactly the mismatch Google penalises.
+ * Products without a price carry no Offer rather than a fabricated one.
+ */
+export function catalogJsonLd(products: CatalogProduct[]) {
+  return {
+    "@type": "ItemList",
+    "@id": `${siteConfig.url}/product#catalog`,
+    name: `${siteConfig.name} product line`,
+    numberOfItems: products.length,
+    itemListElement: products.map((product, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Product",
+        "@id": `${siteConfig.url}/product#${product.slug}`,
+        name: `${siteConfig.name} ${product.name}`,
+        category: product.category,
+        description: product.description,
+        brand: { "@id": organizationId },
+        ...(product.price === null
+          ? {}
+          : {
+              offers: {
+                "@type": "Offer",
+                price: String(product.price),
+                priceCurrency: "USD",
+                availability:
+                  product.availability === "available"
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/PreOrder",
+                url: absoluteUrl("/product"),
+              },
+            }),
+      },
     })),
   };
 }
