@@ -1,37 +1,43 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
-import { ThemeScript } from "@/components/theme/ThemeScript";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-ibm-plex-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  // Lets every URL field below be written as a relative path.
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.tagline}`,
+    default: siteConfig.title,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
-  applicationName: siteConfig.name,
-  authors: [{ name: siteConfig.legalName, url: siteConfig.url }],
-  creator: siteConfig.legalName,
-  publisher: siteConfig.legalName,
-  category: "technology",
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
   alternates: {
     canonical: "/",
   },
@@ -39,71 +45,42 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    title: siteConfig.title,
     description: siteConfig.description,
     locale: siteConfig.locale,
-    // The image itself comes from app/opengraph-image.tsx.
   },
   twitter: {
     card: "summary_large_image",
-    site: siteConfig.twitterHandle,
-    creator: siteConfig.twitterHandle,
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    title: siteConfig.title,
     description: siteConfig.shortDescription,
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  formatDetection: {
-    telephone: false,
-    address: false,
-    email: false,
-  },
-  appleWebApp: {
-    capable: true,
-    title: siteConfig.name,
-    statusBarStyle: "black-translucent",
-  },
-  // Drop in the tokens from Search Console / Bing Webmaster Tools when you have them.
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  colorScheme: "light dark",
-  // Matches --bg in globals.css so mobile browser chrome blends with the page.
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#07080f" },
-  ],
+  colorScheme: "dark",
+  themeColor: "#07080d",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
-      data-theme="light"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full`}
+      className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${jetbrainsMono.variable} h-full dark`}
     >
-      <head>
-        <ThemeScript />
-      </head>
-      <body className="flex min-h-full flex-col bg-bg font-sans text-fg">
+      <body className="flex min-h-full flex-col bg-[#07080d] text-[#e9edf8] font-sans">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-fg"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[#4d7cff] focus:px-4 focus:py-2 focus:text-white"
         >
           Skip to content
         </a>
@@ -112,6 +89,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+        <FloatingWhatsApp />
       </body>
     </html>
   );
