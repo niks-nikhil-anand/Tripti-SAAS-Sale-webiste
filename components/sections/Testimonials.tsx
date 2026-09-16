@@ -1,63 +1,45 @@
-import { testimonials } from "@/lib/site";
-import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-
-function initials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .slice(0, 2)
-    .join("");
-}
-
 export function Testimonials() {
+  const tSlots = [
+    { label: "Testimonial slot — awaiting a real client quote" },
+    { label: "Testimonial slot — awaiting a real client quote" },
+    { label: "Testimonial slot — awaiting a real client quote" },
+  ];
+
   return (
     <section
       id="testimonials"
-      aria-labelledby="testimonials-heading"
-      className="scroll-mt-24 py-20 sm:py-28"
+      className="rv max-w-[1240px] mx-auto px-4 sm:px-6 pt-16 sm:pt-24 lg:pt-28"
     >
-      <Container>
-        <SectionHeading
-          id="testimonials-heading"
-          eyebrow="Customers"
-          title="The teams who stopped filing data tickets"
-          description="Read what data leads and product managers say after their first quarter on Stackpilot."
-        />
+      <p className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.22em] uppercase text-[var(--blue)] mb-4.5">
+        06 — Client stories
+      </p>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure
-              key={t.name}
-              className="flex flex-col justify-between gap-6 rounded-2xl border border-border bg-surface p-6"
-            >
-              <blockquote className="text-[0.9375rem] leading-7 text-pretty">
-                <span aria-hidden="true" className="text-accent">
-                  &ldquo;
-                </span>
-                {t.quote}
-                <span aria-hidden="true" className="text-accent">
-                  &rdquo;
-                </span>
-              </blockquote>
-              <figcaption className="flex items-center gap-3 border-t border-border pt-5">
-                <span
-                  aria-hidden="true"
-                  className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-accent-soft text-sm font-semibold text-accent"
-                >
-                  {initials(t.name)}
-                </span>
-                <span className="flex flex-col">
-                  <span className="text-sm font-semibold">{t.name}</span>
-                  <span className="text-sm text-fg-muted">
-                    {t.role}, {t.company}
-                  </span>
-                </span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </Container>
+      <h2 className="font-['Space_Grotesk'] text-[30px] sm:text-[42px] lg:text-[52px] leading-[1.08] mb-6 text-[var(--ink)]">
+        Testimonials.
+      </h2>
+
+      <p className="max-w-[66ch] text-[13.5px] leading-[1.65] text-[#cfd7ea] border border-[rgba(139,92,246,0.3)] rounded-[var(--r)] bg-[rgba(139,92,246,0.08)] p-3.5 sm:p-4 mb-7">
+        [PLACEHOLDER] No testimonials were supplied, so none are shown. Nothing is fabricated and no Review or AggregateRating schema is emitted until real, permissioned quotes exist.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {tSlots.map((s, idx) => (
+          <div
+            key={idx}
+            className="border border-dashed border-[var(--line2)] rounded-[var(--r-lg)] bg-[rgba(255,255,255,0.02)] p-6 min-h-[190px] flex flex-col gap-3"
+          >
+            <span className="font-['Space_Grotesk'] text-[34px] text-[var(--faint)] leading-none">
+              “
+            </span>
+            <p className="font-['Space_Grotesk'] font-semibold text-[16px] text-[#cfd7ea]">
+              {s.label}
+            </p>
+            <p className="text-[12.5px] leading-[1.6] text-[var(--faint)] mt-auto">
+              Fields: quote, client name, role, company, linked case study, permission-to-publish flag.
+            </p>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
