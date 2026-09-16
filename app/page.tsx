@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/lib/site";
-import { jsonLdScript, landingPageJsonLd } from "@/lib/seo";
+import { siteConfig, homeFaqs } from "@/lib/site";
 import { Hero } from "@/components/sections/Hero";
-import { LogoCloud } from "@/components/sections/LogoCloud";
-import { Features } from "@/components/sections/Features";
-import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Marquee } from "@/components/sections/Marquee";
+import { Services } from "@/components/sections/Services";
+import { SelectedWork } from "@/components/sections/SelectedWork";
+import { AiEngineering } from "@/components/sections/AiEngineering";
+import { WhyHireMe } from "@/components/sections/WhyHireMe";
+import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { Pricing } from "@/components/sections/Pricing";
-import { FAQ } from "@/components/sections/FAQ";
-import { CTA } from "@/components/sections/CTA";
+import { LocationsServed } from "@/components/sections/LocationsServed";
+import { Insights } from "@/components/sections/Insights";
+import { FAQAccordion } from "@/components/sections/FAQAccordion";
+import { ContactCTA } from "@/components/sections/ContactCTA";
 
 export const metadata: Metadata = {
-  // The home page owns the untemplated title; every other route gets "%s | Name".
-  title: { absolute: `${siteConfig.name} — ${siteConfig.tagline}` },
+  title: siteConfig.title,
   description: siteConfig.description,
   alternates: { canonical: "/" },
 };
@@ -20,18 +22,23 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={jsonLdScript(landingPageJsonLd)}
-      />
       <Hero />
-      <LogoCloud />
-      <Features />
-      <HowItWorks />
+      <Marquee />
+      <Services />
+      <SelectedWork />
+      <AiEngineering />
+      <WhyHireMe />
+      <ProcessTimeline />
       <Testimonials />
-      <Pricing />
-      <FAQ />
-      <CTA />
+      <LocationsServed />
+      <Insights />
+      <FAQAccordion
+        id="faq"
+        labelNumber="09 — FAQ"
+        title="Questions Buyers Ask First."
+        faqs={homeFaqs}
+      />
+      <ContactCTA />
     </>
   );
 }
