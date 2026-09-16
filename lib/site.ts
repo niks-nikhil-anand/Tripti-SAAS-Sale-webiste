@@ -1,82 +1,511 @@
 /**
- * Single source of truth for every piece of copy, link and SEO value on the
- * landing page. Rename the product, swap the pricing, change the domain — it
- * all flows from here into the components, the metadata and the JSON-LD.
+ * Single source of truth for Tripti Shakya Developer Portfolio / Agency Site.
  */
 
 export const siteConfig = {
-  name: "Stackpilot",
-  legalName: "Stackpilot, Inc.",
-  domain: "stackpilot.com",
-  url:
-    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-    "https://stackpilot.com",
-  tagline: "Product analytics with an AI copilot",
+  name: "TRIPTI SHAKYA",
+  legalName: "Tripti Shakya",
+  title: "TRIPTI SHAKYA — Full-Stack + AI Developer",
+  tagline: "I Build Digital Products That Think, Scale & Perform.",
   description:
-    "Stackpilot turns raw product data into answers. Ask in plain English, get a governed metric, a chart and the cohort behind it — in seconds, not sprints.",
+    "Full-stack developer specializing in React, Next.js, Python and AI — building production-grade applications, intelligent systems and high-performance digital products.",
   shortDescription:
-    "Ask your product data anything. Stackpilot returns governed metrics, charts and cohorts in seconds.",
+    "Full-stack developer specializing in React, Next.js, Python & AI.",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://triptishakya.dev",
+  domain: "triptishakya.dev",
   keywords: [
-    "product analytics",
-    "AI analytics platform",
-    "self-serve BI",
-    "funnel analysis",
-    "retention analytics",
-    "SaaS analytics software",
-    "metrics layer",
-    "warehouse-native analytics",
+    "Full-Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Python Developer",
+    "AI Developer",
+    "LLM Integration",
+    "RAG Systems",
+    "Bengaluru Developer",
+    "TypeScript Developer",
   ],
   locale: "en_US",
-  twitterHandle: "@stackpilot",
-  founded: "2021",
-  email: "hello@stackpilot.com",
+  email: "triptishakya2002@gmail.com",
+  phone: "+91 62014 14631",
+  location: "Bengaluru, India (IST)",
+  whatsappNumber: "916201414631",
+  twitterHandle: "@triptishakya",
+  founded: "2022",
   social: {
-    x: "https://x.com/stackpilot",
-    linkedin: "https://www.linkedin.com/company/stackpilot",
-    github: "https://github.com/stackpilot",
+    x: "https://x.com/triptishakya",
+    linkedin: "https://linkedin.com/in/triptishakya",
+    github: "https://github.com/triptishakya",
   },
 } as const;
 
-export const nav = [
-  { label: "Product", href: "/product" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
-  { label: "Hire us", href: "/hire-me" },
+export const heroStack = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Python",
+  "FastAPI",
+  "Node.js",
+  "PostgreSQL",
+  "LLMs",
+  "RAG",
+  "AI Agents",
 ] as const;
 
-/** Routes that belong in sitemap.xml. /checkout is deliberately absent. */
+export const marqueeItems = [
+  "React 19",
+  "Next.js App Router",
+  "TypeScript",
+  "Python",
+  "FastAPI",
+  "Node.js",
+  "PostgreSQL",
+  "LLM APIs",
+  "RAG Pipelines",
+  "AI Agents",
+  "Tailwind CSS",
+  "TanStack Query",
+  "Vector Search",
+  "Redis",
+  "Docker",
+  "Vercel",
+  "AWS",
+  "Zod",
+  "GraphQL",
+  "WebSockets",
+] as const;
+
+export const aiCapabilities = [
+  "LLM Integration",
+  "RAG Systems",
+  "AI Agents",
+  "AI Chatbots",
+  "Speech AI",
+  "Automation",
+  "Vector Search",
+  "Model APIs",
+] as const;
+
+export type ServiceItem = {
+  id: string;
+  num: string;
+  name: string;
+  blurb: string;
+  tags: string[];
+  icon: string;
+  cta: string;
+  href: string;
+};
+
+export const services: ServiceItem[] = [
+  {
+    id: "react",
+    num: "01",
+    name: "React Development",
+    blurb:
+      "React 19, Server Components, performance audits, state architecture, component libraries and responsive UIs built for scale.",
+    tags: ["React 19", "TypeScript", "TanStack"],
+    icon: "⚛️",
+    cta: "Explore React Service",
+    href: "/services/react",
+  },
+  {
+    id: "nextjs",
+    num: "02",
+    name: "Next.js Development",
+    blurb:
+      "App Router architectures, SSR/SSG optimization, edge functions, Web Vitals performance tuning, and Vercel deployments.",
+    tags: ["Next.js 16", "App Router", "SSR"],
+    icon: "▲",
+    cta: "Discuss Next.js Project",
+    href: "/hire-me?service=Next.js+development",
+  },
+  {
+    id: "python",
+    num: "03",
+    name: "Python Development",
+    blurb:
+      "FastAPI and Django web services, asynchronous background tasks, data pipelines, script automation, and RESTful APIs.",
+    tags: ["Python", "FastAPI", "Django"],
+    icon: "🐍",
+    cta: "Discuss Python Project",
+    href: "/hire-me?service=Python+development",
+  },
+  {
+    id: "ai",
+    num: "04",
+    name: "AI Development",
+    blurb:
+      "LLM integration, Retrieval-Augmented Generation (RAG), vector database search, tool-calling agents, and prompt evaluations.",
+    tags: ["LLMs", "RAG", "AI Agents"],
+    icon: "✨",
+    cta: "Discuss AI Project",
+    href: "/hire-me?service=AI+development",
+  },
+  {
+    id: "fullstack",
+    num: "05",
+    name: "Full Stack Development",
+    blurb:
+      "End-to-end web product engineering from relational database schemas and API endpoints to high-performance frontend interfaces.",
+    tags: ["React", "Node", "Postgres"],
+    icon: "⚡",
+    cta: "Start Full-Stack Build",
+    href: "/hire-me?service=Full-stack+development",
+  },
+  {
+    id: "nodejs",
+    num: "06",
+    name: "Node.js Development",
+    blurb:
+      "Express & NestJS microservices, real-time WebSocket applications, event queues, rate-limited APIs, and backend tooling.",
+    tags: ["Node.js", "Express", "WebSockets"],
+    icon: "🟢",
+    cta: "Discuss Node Project",
+    href: "/hire-me?service=Node.js+development",
+  },
+  {
+    id: "typescript",
+    num: "07",
+    name: "TypeScript Development",
+    blurb:
+      "Strict typing across full stack boundaries, shared type definitions, API schema validation with Zod, and JS-to-TS refactoring.",
+    tags: ["TypeScript", "Zod", "Type Safety"],
+    icon: "📘",
+    cta: "Discuss TS Refactor",
+    href: "/hire-me?service=TypeScript+development",
+  },
+  {
+    id: "automation",
+    num: "08",
+    name: "AI Automation",
+    blurb:
+      "Autonomous workflow automations, web scrapers, data processing pipelines, webhooks, and scheduled cron execution.",
+    tags: ["Automation", "Pipelines", "Cron"],
+    icon: "🔄",
+    cta: "Discuss Automation",
+    href: "/hire-me?service=AI+automation",
+  },
+  {
+    id: "chatbot",
+    num: "09",
+    name: "AI Chatbot Development",
+    blurb:
+      "Custom conversational agents with streaming responses, memory management, tool execution, and domain-specific knowledge bases.",
+    tags: ["Chatbots", "Streaming", "Tool Calling"],
+    icon: "💬",
+    cta: "Discuss AI Chatbot",
+    href: "/hire-me?service=AI+chatbot+development",
+  },
+  {
+    id: "backend",
+    num: "10",
+    name: "Backend & API Development",
+    blurb:
+      "PostgreSQL & Redis database design, authentication systems, API security, caching layers, and high-concurrency architectures.",
+    tags: ["PostgreSQL", "Redis", "REST"],
+    icon: "🛠️",
+    cta: "Discuss Backend API",
+    href: "/hire-me?service=Backend+%26+API+development",
+  },
+];
+
+export const projects = [
+  {
+    industry: "SaaS Analytics",
+    title: "High-Throughput Product Analytics Dashboard",
+    problem:
+      "Legacy dashboard suffered from slow query rendering (40s+) and failed under concurrent user reporting traffic.",
+    solution:
+      "Rebuilt the frontend with React 19 virtualized data tables, TanStack Query server caching, and Next.js route handler streaming.",
+    stack: ["React 19", "Next.js", "TypeScript", "Tailwind CSS", "Chart.js"],
+    result:
+      "Dashboard load time reduced by 64% with instant sub-second filtered data view updates across 50,000+ events.",
+    rowClass: "proj-row-1",
+  },
+  {
+    industry: "AI Knowledge Base",
+    title: "Enterprise Document RAG & Neural Search Platform",
+    problem:
+      "Internal knowledge search was fragmented across PDFs and docs, requiring manual team search taking up to 15 mins per query.",
+    solution:
+      "Engineered a Python/FastAPI RAG pipeline with Qdrant vector embeddings, hybrid semantic retrieval, and streaming LLM responses.",
+    stack: ["Python", "FastAPI", "OpenAI API", "Qdrant", "React"],
+    result:
+      "Cut document lookup time from 15 minutes down to 2.4 seconds with verified source citation links.",
+    rowClass: "proj-row-2",
+  },
+  {
+    industry: "FinTech Platform",
+    title: "Real-time Customer Portal & Audit System",
+    problem:
+      "Client needed a secure, role-based customer portal with strict audit logging and real-time transaction status streams.",
+    solution:
+      "Built a typed React application with WebSocket connection fallback, Zod schema validation, and PostgreSQL audit tables.",
+    stack: ["TypeScript", "Node.js", "PostgreSQL", "React", "WebSockets"],
+    result:
+      "Zero silent data validation failures, 99.99% socket uptime, and full compliance audit approval.",
+    rowClass: "proj-row-3",
+  },
+];
+
+export const whyHireMeReasons = [
+  {
+    n: "01",
+    t: "Senior Execution",
+    b: "Direct engagement with the senior engineer writing your code. No middle management friction, bloated handoffs, or junior oversight.",
+  },
+  {
+    n: "02",
+    t: "Production Quality",
+    b: "Strict TypeScript, structured state boundaries, comprehensive unit & integration testing, and WCAG accessibility built-in.",
+  },
+  {
+    n: "03",
+    t: "Measurable Results",
+    b: "Performance audits with documented before-and-after benchmarks. Focus on Core Web Vitals, page speed, and clean maintenance.",
+  },
+  {
+    n: "04",
+    t: "Transparent Cadence",
+    b: "Daily asynchronous updates, clear progress metrics, clean pull requests, and committed working-hours overlap for your team.",
+  },
+];
+
+export const processTimeline = [
+  {
+    n: "01",
+    title: "Discovery",
+    body: "Clarify technical requirements, business goals, target metrics, and system scope.",
+  },
+  {
+    n: "02",
+    title: "Architecture",
+    body: "Draft system blueprint, database schema, API boundaries, and UI wireframes.",
+  },
+  {
+    n: "03",
+    title: "Development",
+    body: "Ship production-ready code in rapid iterative sprints with continuous preview deploys.",
+  },
+  {
+    n: "04",
+    title: "QA & Audit",
+    body: "Run performance benchmarks, end-to-end testing, security checks, and WCAG audits.",
+  },
+  {
+    n: "05",
+    title: "Production Launch",
+    body: "Deploy to production infrastructure with monitoring, error tracking, and zero downtime.",
+  },
+  {
+    n: "06",
+    title: "Handover & Scale",
+    body: "Deliver clear documentation, codebase walkthroughs, and optional standing maintenance.",
+  },
+];
+
+export const locationCards = [
+  {
+    kind: "Based in",
+    place: "Bengaluru, India",
+    body: "On-site meetings possible. Primary location for engineering operations and in-person alignment.",
+  },
+  {
+    kind: "Serving clients in",
+    place: "Mumbai · Delhi NCR · Hyderabad · Pune",
+    body: "Same time zone, remote delivery, and fast turnaround with occasional travel for project kickoffs.",
+  },
+  {
+    kind: "Remote development for",
+    place: "Dubai · London",
+    body: "High working-hours overlap with IST. Seamless asynchronous updates and remote contract execution.",
+  },
+  {
+    kind: "Remote development for",
+    place: "United States (US East / West)",
+    body: "Committed daily morning overlap window with US teams and detailed async progress logs.",
+  },
+];
+
+export const featuredArticle = {
+  cat: "Hiring",
+  title: "How to Hire a React Developer for Production Products",
+  desc: "What to look for in component architecture, state management choices, and three coding test questions that reveal weak candidates — written for technical founders and team leads.",
+  read: "12 min read",
+  date: "Sep 2026",
+};
+
+export const insightsArticles = [
+  {
+    cat: "Next.js",
+    title: "Migrating from Vite to Next.js App Router Without Downtime",
+    desc: "A step-by-step architecture pattern for converting client-side SPAs into hybrid server-rendered Next.js applications.",
+    read: "8 min read",
+    date: "Aug 2026",
+  },
+  {
+    cat: "AI Engineering",
+    title: "Building Production RAG: Beyond Naive Vector Search",
+    desc: "Why chunk size tuning, hybrid BM25 + dense retrieval, and reranking are essential for enterprise document Q&A accuracy.",
+    read: "10 min read",
+    date: "Aug 2026",
+  },
+  {
+    cat: "Performance",
+    title: "Reducing React Re-Renders in High-Frequency Data Tables",
+    desc: "How selector memoization, state colocation, and windowing keep 10,000-row tables running at 60 FPS.",
+    read: "6 min read",
+    date: "Jul 2026",
+  },
+  {
+    cat: "Python / AI",
+    title: "FastAPI + WebSockets for Streaming LLM Token Responses",
+    desc: "Implementing resilient server-sent events and WebSockets for real-time generative AI interfaces.",
+    read: "7 min read",
+    date: "Jul 2026",
+  },
+  {
+    cat: "Architecture",
+    title: "Type Safety Across the Boundary: Next.js, Zod, and PostgreSQL",
+    desc: "Ensuring zero-runtime type mismatches between your database migrations, API routes, and React components.",
+    read: "9 min read",
+    date: "Jun 2026",
+  },
+];
+
+export const homeFaqs = [
+  {
+    q: "What stacks and technologies do you specialize in?",
+    a: "Full-stack web development (React 19, Next.js, TypeScript, Tailwind CSS), backend engineering (Python/FastAPI, Node.js, PostgreSQL, Redis), and AI systems (LLMs, RAG, AI Agents, Vector DBs).",
+  },
+  {
+    q: "How do project engagements work?",
+    a: "Projects run on fixed-scope deliverables, dedicated weekly/monthly capacity sprints, or ongoing retainer maintenance. Pricing is transparently quoted per project.",
+  },
+  {
+    q: "What is your availability for new engagements?",
+    a: "Currently accepting select projects for Q4 2026. Submitting a project brief guarantees a detailed response and preliminary technical breakdown within 24 hours.",
+  },
+  {
+    q: "How do you handle time-zone differences for international clients?",
+    a: "Based in Bengaluru (IST), I commit to dedicated daily overlap windows for teams in the US, UK, Europe, and Middle East, backed by clear written async updates.",
+  },
+  {
+    q: "Do you work with existing codebases or only new builds?",
+    a: "Both! I audit, refactor, and modernize existing codebases (e.g., migrating CRA/Vite to Next.js or JavaScript to strict TypeScript) as well as building greenfield products from scratch.",
+  },
+  {
+    q: "What deliverables are included with every engagement?",
+    a: "A clean documented repository, automated unit/integration test coverage, CI/CD deployment configuration, and a detailed handover document for your team.",
+  },
+];
+
+export const reactFaqs = [
+  {
+    q: "Why hire a specialized React developer over a generalist?",
+    a: "React application performance, state design, and component reusability determine long-term maintenance costs. A specialist ensures proper cache boundaries, zero unnecessary re-renders, and WCAG accessibility.",
+  },
+  {
+    q: "How do you handle state management in React apps?",
+    a: "I keep state local to where it is consumed, use TanStack Query or SWR for server cache, URL search params for bookmarkable state, and light global stores (Zustand/Context) only when distantly shared.",
+  },
+  {
+    q: "Can you upgrade our existing React app to React 19 / Next.js?",
+    a: "Yes. I perform incremental refactoring—migrating route by route without pausing your team's ongoing feature velocity.",
+  },
+  {
+    q: "Do you write automated tests for React components?",
+    a: "Yes. Critical user flows are covered using Vitest, React Testing Library, and Playwright for end-to-end regression testing.",
+  },
+  {
+    q: "How do you optimize React page performance and Core Web Vitals?",
+    a: "Through dynamic code splitting, image optimization, dynamic imports, virtualization for large lists, and removing heavy third-party bundle dependencies.",
+  },
+];
+
+export const hireFaqs = [
+  {
+    q: "How fast can we start a project after initial contact?",
+    a: "Following brief submission, we hold a 30-minute technical scope call within 24-48 hours. Engineering work usually commences within 3 to 7 days.",
+  },
+  {
+    q: "What contract formats do you support?",
+    a: "Fixed-price milestone agreements, weekly sprint contracts, hourly audit consulting, or monthly standing retainer agreements.",
+  },
+  {
+    q: "Who owns the code and intellectual property?",
+    a: "You own 100% of the code, assets, IP, and repository upon completion. All code is committed directly to your organization's repository.",
+  },
+  {
+    q: "What happens if our requirements change mid-project?",
+    a: "We maintain agile flexibility. Any scope adjustments are documented with clear impact on timeline and budget before work proceeds.",
+  },
+];
+
+export const engagementModels = [
+  {
+    id: "fixed",
+    tag: "Fixed Scope",
+    name: "Fixed Deliverable",
+    body: "Agreed feature scope, milestones, clear timeline, and fixed quote.",
+  },
+  {
+    id: "weekly",
+    tag: "Dedicated Sprint",
+    name: "Weekly Sprint",
+    body: "Full-time dedicated weekly capacity on your roadmap.",
+  },
+  {
+    id: "audit",
+    tag: "Consulting",
+    name: "Audit & Consulting",
+    body: "Code review, performance audit, or architecture consultation.",
+  },
+  {
+    id: "retainer",
+    tag: "Ongoing",
+    name: "Retainer Support",
+    body: "Standing monthly allocation for maintenance & ongoing builds.",
+  },
+];
+
+export const expertiseGroups = [
+  {
+    k: "Frontend",
+    v: "React 19, Next.js App Router, TypeScript, Server Components, Tailwind CSS",
+  },
+  {
+    k: "Backend",
+    v: "Python (FastAPI, Django), Node.js, PostgreSQL, Redis, Celery, Docker",
+  },
+  {
+    k: "AI Engineering",
+    v: "LLM APIs, RAG pipelines, Qdrant/pgvector, tool-calling agents, prompt evals",
+  },
+  {
+    k: "Platform & DevOps",
+    v: "Vercel, AWS, GitHub Actions, Sentry, Core Web Vitals monitoring",
+  },
+];
+
+/* Backward compatibility exports for legacy template helpers */
+export const nav = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services/react" },
+  { label: "Hire me", href: "/hire-me" },
+] as const;
+
 export const indexableRoutes = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
-  { path: "/product", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/blog", changeFrequency: "daily", priority: 0.8 },
-  { path: "/about", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/hire-me", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/services/react", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/hire-me", changeFrequency: "weekly", priority: 0.9 },
 ] as const;
 
-export const stats = [
-  { value: "4,200+", label: "product teams onboarded" },
-  { value: "18s", label: "median time to first answer" },
-  { value: "99.98%", label: "rolling 12-month uptime" },
-  { value: "6.4x", label: "more questions answered per PM" },
-] as const;
+export const logos = ["React", "Next.js", "Python", "FastAPI", "TypeScript", "Node.js"] as const;
 
-export const logos = [
-  "Northwind",
-  "Lumen Labs",
-  "Kestrel",
-  "Verdant",
-  "Halcyon",
-  "Tessellate",
-] as const;
+export const steps = processTimeline.map((t) => ({ title: t.title, description: t.body }));
 
-export type FeatureIcon =
-  | "sparkles"
-  | "shield"
-  | "bolt"
-  | "graph"
-  | "plug"
-  | "users";
+export type FeatureIcon = "sparkles" | "shield" | "bolt" | "graph" | "plug" | "users";
 
 export type Feature = {
   title: string;
@@ -84,220 +513,21 @@ export type Feature = {
   icon: FeatureIcon;
 };
 
-export const features: Feature[] = [
-  {
-    icon: "sparkles",
-    title: "Ask in plain English",
-    description:
-      "Which onboarding step lost the most enterprise trials last quarter? Stackpilot writes the SQL, runs it against your warehouse, and shows its work.",
-  },
-  {
-    icon: "shield",
-    title: "A metrics layer you can trust",
-    description:
-      "Definitions live in version control and get reviewed like code. Every chart cites the metric it used, so activated users means one thing company-wide.",
-  },
-  {
-    icon: "bolt",
-    title: "Answers in seconds",
-    description:
-      "An incremental query engine caches aggregates as your events land. Dashboards that took 40 seconds on your warehouse come back in under two.",
-  },
-  {
-    icon: "graph",
-    title: "Funnels, retention, cohorts",
-    description:
-      "Purpose-built explorers for the questions product teams actually ask — drop-off, time-to-value, weekly retention — with no modelling work required.",
-  },
-  {
-    icon: "plug",
-    title: "Connects to what you already run",
-    description:
-      "Native syncs for Snowflake, BigQuery, Databricks, Postgres, Segment and dbt. Point at your existing models and keep the warehouse as source of truth.",
-  },
-  {
-    icon: "users",
-    title: "Built for the whole team",
-    description:
-      "Row-level permissions, SSO and SCIM, audit logs, and shareable read-only links so support and sales get answers without a seat-per-person tax.",
-  },
-];
+export const features: Feature[] = services.slice(0, 6).map((s) => ({
+  icon: "sparkles",
+  title: s.name,
+  description: s.blurb,
+}));
 
-export const steps = [
-  {
-    title: "Connect your warehouse",
-    description:
-      "A read-only role and five minutes. Stackpilot introspects your schema and proposes a starting metric set from your existing dbt models.",
-  },
-  {
-    title: "Confirm your metrics",
-    description:
-      "Review the proposed definitions, edit them in YAML or the UI, then merge. From that point every answer is traceable to a reviewed definition.",
-  },
-  {
-    title: "Ask, share, ship",
-    description:
-      "Your team asks questions in natural language, pins the good answers to dashboards, and gets alerted the moment a metric drifts out of band.",
-  },
-] as const;
+export const faqs = homeFaqs.map((f) => ({ question: f.q, answer: f.a }));
 
-export type Testimonial = {
-  quote: string;
-  name: string;
-  role: string;
-  company: string;
-};
-
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      "We cut our analytics backlog from three weeks to same-day. PMs stopped filing tickets because they can just ask — and I stopped worrying, because they are asking against definitions my team reviewed.",
-    name: "Priya Raghavan",
-    role: "Head of Data",
-    company: "Northwind",
-  },
-  {
-    quote:
-      "The metrics layer is the whole thing. Two teams used to report different activation numbers in the same meeting. That has not happened once since we moved.",
-    name: "Marcus Ellery",
-    role: "VP Product",
-    company: "Lumen Labs",
-  },
-  {
-    quote:
-      "It reads our dbt models instead of asking us to rebuild them. That single decision is why the rollout took a week rather than a quarter.",
-    name: "Sofia Nakamura",
-    role: "Staff Analytics Engineer",
-    company: "Kestrel",
-  },
-];
-
-export type Plan = {
-  name: string;
-  monthly: number | null;
-  annual: number | null;
-  blurb: string;
-  features: string[];
-  cta: string;
-  featured?: boolean;
-};
-
-export const plans: Plan[] = [
-  {
-    name: "Starter",
-    monthly: 0,
-    annual: 0,
-    blurb: "For small teams validating the workflow.",
-    features: [
-      "Up to 3 editors, unlimited viewers",
-      "1 warehouse connection",
-      "2M tracked events per month",
-      "30 AI questions per day",
-      "Community support",
-    ],
-    cta: "Start free",
-  },
-  {
-    name: "Growth",
-    monthly: 79,
-    annual: 63,
-    blurb: "For product teams running on their own metrics.",
-    features: [
-      "Unlimited editors and viewers",
-      "Unlimited warehouse connections",
-      "50M tracked events per month",
-      "Unlimited AI questions",
-      "dbt sync, metric reviews and alerts",
-      "SSO (Google, Okta) and audit logs",
-    ],
-    cta: "Start 14-day trial",
-    featured: true,
-  },
-  {
-    name: "Enterprise",
-    monthly: null,
-    annual: null,
-    blurb: "For regulated teams with procurement.",
-    features: [
-      "Everything in Growth",
-      "SCIM provisioning and row-level policies",
-      "VPC or on-premise deployment",
-      "SOC 2 Type II and HIPAA BAA",
-      "99.99% uptime SLA",
-      "Named solutions architect",
-    ],
-    cta: "Talk to sales",
-  },
-];
-
-export const faqs = [
-  {
-    question: "Do I need to move my data into Stackpilot?",
-    answer:
-      "No. Stackpilot queries your warehouse directly using a read-only role and caches aggregates for speed. Your raw data never leaves Snowflake, BigQuery, Databricks or Postgres, and you can revoke access at any time.",
-  },
-  {
-    question: "How accurate is the natural-language querying?",
-    answer:
-      "Questions are answered against your reviewed metric definitions rather than free-form SQL over raw tables, which is what keeps results consistent. Every answer shows the generated SQL and the definition it used, so an analyst can verify or correct it in one click.",
-  },
-  {
-    question: "How long does implementation take?",
-    answer:
-      "Most teams are answering real questions the same day. Connecting a warehouse takes about five minutes, and if you already use dbt, Stackpilot proposes a starting metric set automatically. A full migration from an existing BI tool typically runs one to two weeks.",
-  },
-  {
-    question: "What about security and compliance?",
-    answer:
-      "Stackpilot is SOC 2 Type II certified and GDPR compliant, with encryption in transit and at rest, SSO and SCIM, row-level permissions, and full audit logs. Enterprise customers can deploy into their own VPC and sign a HIPAA BAA.",
-  },
-  {
-    question: "Can I change or cancel my plan?",
-    answer:
-      "Yes. Plans are self-serve month to month or annual, upgrades are prorated, and you can downgrade or cancel from billing settings without contacting support. Annual plans are billed up front at a 20 percent discount.",
-  },
-  {
-    question: "Is there a free tier?",
-    answer:
-      "Starter is free forever for up to three editors, one warehouse connection and two million tracked events per month. No credit card is required, and unlimited viewers are included on every plan.",
-  },
-] as const;
-
-export const footerNav = [
-  {
-    title: "Product",
-    links: [
-      { label: "Overview", href: "/product" },
-      { label: "How it works", href: "/#how-it-works" },
-      { label: "Pricing", href: "/#pricing" },
-      { label: "Start checkout", href: "/checkout" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About", href: "/about" },
-      { label: "Hire our team", href: "/hire-me" },
-      { label: "Blog", href: "/blog" },
-      { label: "Contact", href: "/hire-me#contact" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Documentation", href: "/blog" },
-      { label: "Integrations", href: "/product#integrations" },
-      { label: "Security", href: "/product#security" },
-      { label: "FAQ", href: "/#faq" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy", href: "/about#legal" },
-      { label: "Terms", href: "/about#legal" },
-      { label: "DPA", href: "/about#legal" },
-      { label: "Sub-processors", href: "/about#legal" },
-    ],
-  },
-] as const;
+export const plans = engagementModels.map((m) => ({
+  name: m.name,
+  monthly: 0,
+  annual: 0,
+  blurb: m.body,
+  features: [m.tag],
+  cta: "Select model",
+  featured: false,
+}));
+export type Plan = (typeof plans)[number];
