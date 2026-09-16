@@ -1,152 +1,138 @@
+"use me";
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { nav, siteConfig } from "@/lib/site";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
-import { Container } from "@/components/ui/Container";
-import { CloseIcon, Logo, MenuIcon } from "@/components/ui/Icons";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
-
-/** "/product" is current on /product; "/#pricing" style links never are. */
-function isCurrent(href: string, pathname: string) {
-  if (href.includes("#")) return false;
-  return href === "/" ? pathname === "/" : pathname.startsWith(href);
-}
 
 export function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
 
-  // The sheet is open only for the path it was opened on, so navigating
-  // anywhere closes it without an effect that re-renders after the fact.
-  const [openForPath, setOpenForPath] = useState<string | null>(null);
-  const open = openForPath === pathname;
-  const setOpen = (next: boolean) => setOpenForPath(next ? pathname : null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKeyDown = (e: KeyboardEvent) => {
-      // Uses the setter directly: `setOpen` is rebuilt every render, so
-      // depending on it would resubscribe the listener on each one.
-      if (e.key === "Escape") setOpenForPath(null);
-    };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 border-b transition-colors duration-300",
-        scrolled || open
-          ? "border-border bg-bg/80 backdrop-blur-xl"
-          : "border-transparent bg-transparent",
-      )}
-    >
-      <Container>
-        <div className="flex h-16 items-center justify-between gap-4">
+    <div className="sticky top-0 z-[60] p-3.5 sm:px-4">
+      <header
+        className="max-w-[1240px] mx-auto border border-[var(--line)] rounded-[var(--r-lg)] bg-[rgba(9,11,20,0.72)] backdrop-blur-xl shadow-[0_18px_50px_-28px_rgba(0,0,0,0.9)] transition-all duration-300"
+      >
+        <div className="flex items-center justify-between gap-6 px-4 py-3">
           <Link
             href="/"
-            className="flex items-center gap-2.5 font-semibold tracking-tight"
+            onClick={closeMenu}
+            className="mr-auto flex flex-col leading-none text-[var(--ink)] hover:opacity-90"
           >
-            <Logo className="size-8" />
-            <span className="text-[1.0625rem]">{siteConfig.name}</span>
+            <span className="font-['Space_Grotesk'] font-bold text-[18px] tracking-[-0.02em]">
+              TRIPTI.
+            </span>
+            <span className="font-['JetBrains_Mono'] text-[9.5px] tracking-[0.24em] text-[var(--faint)] uppercase mt-0.5">
+              Developer
+            </span>
           </Link>
 
-          <nav aria-label="Primary" className="hidden md:block">
-            <ul className="flex items-center gap-1">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={
-                      isCurrent(item.href, pathname) ? "page" : undefined
-                    }
-                    className={cn(
-                      "rounded-lg px-3 py-2 text-sm transition-colors hover:bg-surface-2 hover:text-fg",
-                      isCurrent(item.href, pathname)
-                        ? "text-fg"
-                        : "text-fg-muted",
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Desktop Nav */}
+          <nav
+            aria-label="Primary"
+            className="nav-desktop hidden md:flex items-center gap-6"
+          >
+            <Link
+              href="/"
+              className={`text-[14px] ${
+                pathname === "/" ? "text-[var(--ink)] font-medium" : "text-[var(--dim)]"
+              } hover:text-[var(--ink)] transition-colors`}
+            >
+              Home
+            </Link>
+            <Link
+              href="/#about"
+              className="text-[14px] text-[var(--dim)] hover:text-[var(--ink)] transition-colors"
+            >
+              About
+            </Link>
+            <Link
+              href="/services/react"
+              className={`text-[14px] ${
+                pathname.startsWith("/services") ? "text-[var(--ink)] font-medium" : "text-[var(--dim)]"
+              } hover:text-[var(--ink)] transition-colors`}
+            >
+              Services
+            </Link>
+            <Link
+              href="/#projects"
+              className="text-[14px] text-[var(--dim)] hover:text-[var(--ink)] transition-colors"
+            >
+              Projects
+            </Link>
+            <Link
+              href="/#insights"
+              className="text-[14px] text-[var(--dim)] hover:text-[var(--ink)] transition-colors"
+            >
+              Insights
+            </Link>
+            <Link
+              href="/#contact"
+              className="text-[14px] text-[var(--dim)] hover:text-[var(--ink)] transition-colors"
+            >
+              Contact
+            </Link>
+            <Link
+              href="/hire-me"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-['Space_Grotesk'] font-semibold text-[13.5px] text-white bg-gradient-to-r from-[#4d7cff] to-[#7c5cff] shadow-[0_10px_26px_-12px_rgba(77,124,255,0.85)] hover:shadow-[0_14px_34px_-12px_rgba(124,92,255,0.95)] hover:-translate-y-0.5 transition-all"
+            >
+              Hire Me ↗
+            </Link>
           </nav>
 
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            {/* Wrapped rather than putting `hidden` on the buttons themselves:
-                Button's base sets `inline-flex`, and which of the two display
-                utilities wins depends on Tailwind's output order, not on the
-                order they appear in the class attribute. */}
-            <div className="hidden items-center gap-2 sm:flex">
-              <Button as="a" href="/#pricing" variant="ghost" size="sm">
-                Pricing
-              </Button>
-              <Button as="a" href="/checkout?plan=growth" size="sm">
-                Start free
-              </Button>
-            </div>
-            <button
-              type="button"
-              onClick={() => setOpen(!open)}
-              aria-expanded={open}
-              aria-controls="mobile-nav"
-              aria-label={open ? "Close menu" : "Open menu"}
-              className="inline-flex size-9 items-center justify-center rounded-lg border border-border bg-surface text-fg-muted transition-colors hover:text-fg md:hidden"
-            >
-              {open ? (
-                <CloseIcon className="size-[18px]" />
-              ) : (
-                <MenuIcon className="size-[18px]" />
-              )}
-            </button>
-          </div>
+          {/* Mobile Burger Button */}
+          <button
+            type="button"
+            className="nav-burger md:hidden flex items-center gap-2.5 px-3.5 py-2 min-h-[44px] border border-[var(--line2)] rounded-full bg-[var(--glass)] text-[var(--ink)] font-['Space_Grotesk'] text-[13px] cursor-pointer hover:bg-[var(--glass2)]"
+            aria-label="Toggle navigation menu"
+            aria-expanded={menuOpen}
+            onClick={toggleMenu}
+          >
+            Menu
+            <span
+              aria-hidden="true"
+              className="block w-3.5 h-2 border-t-[1.5px] border-b-[1.5px] border-current"
+            ></span>
+          </button>
         </div>
-      </Container>
 
-      {open ? (
-        <div id="mobile-nav" className="border-t border-border bg-bg md:hidden">
-          <Container className="py-4">
-            <nav aria-label="Mobile">
-              <ul className="flex flex-col gap-1">
-                {nav.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="block rounded-lg px-3 py-2.5 text-[0.9375rem] text-fg-muted transition-colors hover:bg-surface-2 hover:text-fg"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <div className="mt-4 flex flex-col gap-2">
-              <Button as="a" href="/#pricing" variant="secondary">
-                Pricing
-              </Button>
-              <Button as="a" href="/checkout?plan=growth">
-                Start free
-              </Button>
-            </div>
-          </Container>
-        </div>
-      ) : null}
-    </header>
+        {/* Mobile Drawer */}
+        {menuOpen && (
+          <nav
+            aria-label="Mobile"
+            className="nav-drawer md:hidden border-t border-[var(--line)] px-4 pt-2.5 pb-4.5 grid gap-1 animate-in fade-in slide-in-from-top-2 duration-200"
+          >
+            <Link
+              href="/"
+              onClick={closeMenu}
+              className="py-3.5 min-h-[48px] font-['Space_Grotesk'] font-semibold text-[20px] text-[var(--ink)] border-b border-[var(--line)] flex items-center"
+            >
+              Home
+            </Link>
+            <Link
+              href="/services/react"
+              onClick={closeMenu}
+              className="py-3.5 min-h-[48px] font-['Space_Grotesk'] font-semibold text-[20px] text-[var(--ink)] border-b border-[var(--line)] flex items-center"
+            >
+              React Development
+            </Link>
+            <Link
+              href="/hire-me"
+              onClick={closeMenu}
+              className="py-3.5 min-h-[48px] font-['Space_Grotesk'] font-semibold text-[20px] text-[#a9c0ff] border-b border-[var(--line)] flex items-center"
+            >
+              Hire Me ↗
+            </Link>
+            <span className="pt-3 text-[12px] text-[var(--faint)]">
+              Full-Stack & AI Engineering Portfolio
+            </span>
+          </nav>
+        )}
+      </header>
+    </div>
   );
 }
