@@ -33,11 +33,11 @@ export function Hero() {
           I Build Digital Products That <span className="grad-word">Think, Scale</span> &amp; Perform.
         </h1>
 
-        <p className="text-[15.5px] sm:text-[18.5px] leading-[1.65] text-[var(--dim)] max-w-[56ch] mb-8.5">
+        <p className="text-[15.5px] sm:text-[18.5px] leading-[1.65] text-[var(--dim)] max-w-[56ch] mb-10 sm:mb-12">
           Full-stack developer specializing in React, Next.js, Python and AI — building production-grade applications, intelligent systems and high-performance digital products.
         </p>
 
-        <div className="flex flex-wrap items-center gap-3.5">
+        <div className="flex flex-wrap items-center gap-4 pt-2">
           <Link
             href="/hire-me"
             className="inline-flex items-center gap-2.5 px-6.5 py-3.75 rounded-full font-['Space_Grotesk'] font-semibold text-[15.5px] text-white bg-gradient-to-r from-[#4d7cff] to-[#7c5cff] shadow-[0_18px_44px_-18px_rgba(77,124,255,0.9)] hover:shadow-[0_24px_54px_-18px_rgba(124,92,255,1)] hover:-translate-y-0.5 transition-all"
