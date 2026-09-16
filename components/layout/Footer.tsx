@@ -1,86 +1,171 @@
 import Link from "next/link";
-import { footerNav, siteConfig } from "@/lib/site";
-import { Container } from "@/components/ui/Container";
-import { Logo } from "@/components/ui/Icons";
-
-const socials = [
-  { label: "X", href: siteConfig.social.x, path: "M3 3h4.2l4.4 6.1L16.6 3H21l-6.9 8.9L21.4 21H17l-4.7-6.5L6.9 21H3l7.2-9.3L3 3Z" },
-  {
-    label: "LinkedIn",
-    href: siteConfig.social.linkedin,
-    path: "M4.5 3.5A2 2 0 1 1 4.5 7.5a2 2 0 0 1 0-4ZM3 9h3v12H3V9Zm6 0h2.9v1.6A3.4 3.4 0 0 1 15 8.7c3 0 3.6 2 3.6 4.5V21h-3v-6.6c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5V21H9V9Z",
-  },
-  {
-    label: "GitHub",
-    href: siteConfig.social.github,
-    path: "M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8 0-.7.4-1.1.7-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.6 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2Z",
-  },
-];
+import { siteConfig } from "@/lib/site";
 
 export function Footer() {
+  const waUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+    "Hi, I found your website and would like to discuss a development project."
+  )}`;
+
   return (
-    <footer className="border-t border-border bg-bg-subtle">
-      <Container className="py-14">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_repeat(4,1fr)]">
-          <div className="flex flex-col gap-4">
-            <Link href="/" className="flex items-center gap-2.5 font-semibold tracking-tight">
-              <Logo className="size-8" />
-              <span>{siteConfig.name}</span>
-            </Link>
-            <p className="max-w-xs text-sm leading-6 text-fg-muted">
-              {siteConfig.shortDescription}
+    <footer className="border-t border-[var(--line)] bg-gradient-to-b from-[rgba(255,255,255,0.02)] to-transparent mt-20">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 py-10 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
+          <div className="sm:col-span-2 md:col-span-1">
+            <p className="font-['Space_Grotesk'] font-bold text-[19px] mb-1 text-[var(--ink)]">
+              TRIPTI.
             </p>
-            <ul className="flex items-center gap-2">
-              {socials.map((s) => (
-                <li key={s.label}>
-                  <a
-                    href={s.href}
-                    rel="noopener noreferrer me"
-                    target="_blank"
-                    aria-label={`${siteConfig.name} on ${s.label}`}
-                    className="inline-flex size-9 items-center justify-center rounded-lg border border-border bg-surface text-fg-muted transition-colors hover:text-fg"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-4">
-                      <path d={s.path} />
-                    </svg>
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <p className="font-['JetBrains_Mono'] text-[9.5px] tracking-[0.24em] text-[var(--faint)] uppercase mb-3.5">
+              Developer
+            </p>
+            <p className="text-[13px] leading-[1.65] text-[var(--dim)] max-w-[34ch]">
+              Full-stack, React, Next.js, Python and AI developer. Based in
+              Bengaluru, India; working remotely with teams globally.
+            </p>
           </div>
 
-          {footerNav.map((group) => (
-            <nav key={group.title} aria-label={group.title}>
-              <h3 className="text-sm font-semibold">{group.title}</h3>
-              <ul className="mt-4 flex flex-col gap-2.5">
-                {group.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-fg-muted transition-colors hover:text-fg"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          ))}
+          <nav aria-label="Services">
+            <p className="font-['JetBrains_Mono'] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
+              Services
+            </p>
+            <div className="grid gap-2 text-[13px]">
+              <Link
+                href="/services/react"
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                React Developer
+              </Link>
+              <Link
+                href="/hire-me?service=Next.js+development"
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                Next.js Developer
+              </Link>
+              <Link
+                href="/hire-me?service=Python+development"
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                Python Developer
+              </Link>
+              <Link
+                href="/hire-me?service=AI+development"
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                AI Developer
+              </Link>
+              <Link
+                href="/hire-me?service=Full-stack+development"
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                Full Stack Developer
+              </Link>
+              <Link
+                href="/hire-me?service=Node.js+development"
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                Node.js Developer
+              </Link>
+              <Link
+                href="/hire-me?service=TypeScript+development"
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                TypeScript Developer
+              </Link>
+              <Link
+                href="/hire-me?service=AI+automation"
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                Automation Developer
+              </Link>
+              <Link
+                href="/hire-me?service=AI+chatbot+development"
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                Chatbot Developer
+              </Link>
+              <Link
+                href="/hire-me?service=Backend+%26+API+development"
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                Backend & API Developer
+              </Link>
+            </div>
+          </nav>
+
+          <nav aria-label="Quick links">
+            <p className="font-['JetBrains_Mono'] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
+              Quick links
+            </p>
+            <div className="grid gap-2 text-[13px]">
+              <Link href="/#about" className="text-[var(--dim)] hover:text-[var(--ink)]">
+                About
+              </Link>
+              <Link href="/#projects" className="text-[var(--dim)] hover:text-[var(--ink)]">
+                Projects
+              </Link>
+              <Link href="/#insights" className="text-[var(--dim)] hover:text-[var(--ink)]">
+                Insights
+              </Link>
+              <Link href="/#testimonials" className="text-[var(--dim)] hover:text-[var(--ink)]">
+                Testimonials
+              </Link>
+              <Link href="/#faq" className="text-[var(--dim)] hover:text-[var(--ink)]">
+                FAQ
+              </Link>
+              <Link href="/#contact" className="text-[var(--dim)] hover:text-[var(--ink)]">
+                Contact
+              </Link>
+              <Link href="/hire-me" className="text-[var(--dim)] hover:text-[var(--ink)]">
+                Hire Me
+              </Link>
+            </div>
+          </nav>
+
+          <div>
+            <p className="font-['JetBrains_Mono'] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
+              Locations
+            </p>
+            <div className="grid gap-2 text-[13px] text-[var(--dim)]">
+              <span>Based in Bengaluru</span>
+              <span>Serving clients across India</span>
+              <span>Remote for UAE, UK, US</span>
+            </div>
+          </div>
+
+          <div>
+            <p className="font-['JetBrains_Mono'] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
+              Contact
+            </p>
+            <div className="grid gap-2 text-[13px]">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="text-[var(--dim)] hover:text-[var(--ink)] break-all"
+              >
+                {siteConfig.email}
+              </a>
+              <a
+                href={`tel:${siteConfig.phone.replace(/[^0-9+]/g, "")}`}
+                className="text-[var(--dim)] hover:text-[var(--ink)]"
+              >
+                {siteConfig.phone}
+              </a>
+              <a
+                href={waUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#7fe6f7] hover:underline flex items-center gap-1.5"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#25d366]"></span>
+                WhatsApp
+              </a>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-border pt-6 text-sm text-fg-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            &copy; {new Date().getFullYear()} {siteConfig.legalName}. All rights reserved.
-          </p>
-          <p className="flex items-center gap-2">
-            <span
-              aria-hidden="true"
-              className="size-1.5 rounded-full bg-emerald-500"
-            />
-            All systems operational
-          </p>
+        <div className="mt-12 pt-6 border-t border-[var(--line)] flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[var(--faint)]">
+          <p>© {new Date().getFullYear()} TRIPTI SHAKYA. All rights reserved.</p>
+          <p className="font-['JetBrains_Mono']">Full-Stack + AI Developer</p>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }
