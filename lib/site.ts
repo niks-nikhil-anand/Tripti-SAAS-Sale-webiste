@@ -106,7 +106,7 @@ export const services: ServiceItem[] = [
     tags: ["React 19", "TypeScript", "TanStack"],
     icon: "⚛️",
     cta: "Explore React Service",
-    href: "/services/react",
+    href: "/react-developer",
   },
   {
     id: "nextjs",
@@ -116,8 +116,8 @@ export const services: ServiceItem[] = [
       "App Router architectures, SSR/SSG optimization, edge functions, Web Vitals performance tuning, and Vercel deployments.",
     tags: ["Next.js 16", "App Router", "SSR"],
     icon: "▲",
-    cta: "Discuss Next.js Project",
-    href: "/hire-me?service=Next.js+development",
+    cta: "Explore Next.js Project",
+    href: "/nextjs-developer",
   },
   {
     id: "python",
@@ -127,8 +127,8 @@ export const services: ServiceItem[] = [
       "FastAPI and Django web services, asynchronous background tasks, data pipelines, script automation, and RESTful APIs.",
     tags: ["Python", "FastAPI", "Django"],
     icon: "🐍",
-    cta: "Discuss Python Project",
-    href: "/hire-me?service=Python+development",
+    cta: "Explore Python Project",
+    href: "/python-developer",
   },
   {
     id: "ai",
@@ -138,8 +138,8 @@ export const services: ServiceItem[] = [
       "LLM integration, Retrieval-Augmented Generation (RAG), vector database search, tool-calling agents, and prompt evaluations.",
     tags: ["LLMs", "RAG", "AI Agents"],
     icon: "✨",
-    cta: "Discuss AI Project",
-    href: "/hire-me?service=AI+development",
+    cta: "Explore AI Project",
+    href: "/ai-developer",
   },
   {
     id: "fullstack",
@@ -150,7 +150,7 @@ export const services: ServiceItem[] = [
     tags: ["React", "Node", "Postgres"],
     icon: "⚡",
     cta: "Start Full-Stack Build",
-    href: "/hire-me?service=Full-stack+development",
+    href: "/full-stack-developer",
   },
   {
     id: "nodejs",
@@ -160,8 +160,8 @@ export const services: ServiceItem[] = [
       "Express & NestJS microservices, real-time WebSocket applications, event queues, rate-limited APIs, and backend tooling.",
     tags: ["Node.js", "Express", "WebSockets"],
     icon: "🟢",
-    cta: "Discuss Node Project",
-    href: "/hire-me?service=Node.js+development",
+    cta: "Explore Node Project",
+    href: "/nodejs-developer",
   },
   {
     id: "typescript",
@@ -171,8 +171,8 @@ export const services: ServiceItem[] = [
       "Strict typing across full stack boundaries, shared type definitions, API schema validation with Zod, and JS-to-TS refactoring.",
     tags: ["TypeScript", "Zod", "Type Safety"],
     icon: "📘",
-    cta: "Discuss TS Refactor",
-    href: "/hire-me?service=TypeScript+development",
+    cta: "Explore TS Refactor",
+    href: "/typescript-developer",
   },
   {
     id: "automation",
@@ -182,8 +182,8 @@ export const services: ServiceItem[] = [
       "Autonomous workflow automations, web scrapers, data processing pipelines, webhooks, and scheduled cron execution.",
     tags: ["Automation", "Pipelines", "Cron"],
     icon: "🔄",
-    cta: "Discuss Automation",
-    href: "/hire-me?service=AI+automation",
+    cta: "Explore Automation",
+    href: "/automation-development",
   },
   {
     id: "chatbot",
@@ -193,8 +193,8 @@ export const services: ServiceItem[] = [
       "Custom conversational agents with streaming responses, memory management, tool execution, and domain-specific knowledge bases.",
     tags: ["Chatbots", "Streaming", "Tool Calling"],
     icon: "💬",
-    cta: "Discuss AI Chatbot",
-    href: "/hire-me?service=AI+chatbot+development",
+    cta: "Explore AI Chatbot",
+    href: "/ai-chatbot-development",
   },
   {
     id: "backend",
@@ -204,8 +204,8 @@ export const services: ServiceItem[] = [
       "PostgreSQL & Redis database design, authentication systems, API security, caching layers, and high-concurrency architectures.",
     tags: ["PostgreSQL", "Redis", "REST"],
     icon: "🛠️",
-    cta: "Discuss Backend API",
-    href: "/hire-me?service=Backend+%26+API+development",
+    cta: "Explore Backend API",
+    href: "/api-development",
   },
 ];
 
@@ -491,14 +491,17 @@ export const expertiseGroups = [
 /* Backward compatibility exports for legacy template helpers */
 export const nav = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services/react" },
+  { label: "Services", href: "/react-developer" },
   { label: "Hire me", href: "/hire-me" },
 ] as const;
 
 export const indexableRoutes = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
-  { path: "/services/react", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/projects", changeFrequency: "monthly", priority: 0.8 },
   { path: "/hire-me", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/about", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
+  { path: "/contact", changeFrequency: "yearly", priority: 0.5 },
 ] as const;
 
 export const logos = ["React", "Next.js", "Python", "FastAPI", "TypeScript", "Node.js"] as const;
