@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig, homeFaqs } from "@/lib/site";
 import { Hero } from "@/components/sections/Hero";
 import { Marquee } from "@/components/sections/Marquee";
-import { Services } from "@/components/sections/Services";
+import { PageDirectory } from "@/components/sections/PageDirectory";
 import { SelectedWork } from "@/components/sections/SelectedWork";
 import { AiEngineering } from "@/components/sections/AiEngineering";
 import { WhyHireMe } from "@/components/sections/WhyHireMe";
@@ -24,7 +24,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Marquee />
-      <Services />
+      <PageDirectory />
       <SelectedWork />
       <AiEngineering />
       <WhyHireMe />
