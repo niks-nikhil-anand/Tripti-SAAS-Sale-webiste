@@ -10,25 +10,25 @@ export type Crumb = { name: string; path: string };
 export function Breadcrumbs({ trail }: { trail: Crumb[] }) {
   return (
     <nav aria-label="Breadcrumb">
-      <ol className="flex flex-wrap items-center gap-1.5 text-sm text-fg-muted">
+      <ol className="flex flex-wrap items-center gap-1.5 font-[family-name:var(--m)] text-[11px] tracking-[0.08em] text-[var(--faint)]">
         {trail.map((crumb, i) => {
           const isLast = i === trail.length - 1;
           return (
             <li key={crumb.path} className="flex items-center gap-1.5">
               {isLast ? (
-                <span aria-current="page" className="text-fg">
+                <span aria-current="page" className="text-[var(--dim)]">
                   {crumb.name}
                 </span>
               ) : (
                 <Link
                   href={crumb.path}
-                  className="transition-colors hover:text-fg"
+                  className="text-[var(--faint)] transition-colors hover:text-[var(--ink)]"
                 >
                   {crumb.name}
                 </Link>
               )}
               {isLast ? null : (
-                <span aria-hidden="true" className="text-border-strong">
+                <span aria-hidden="true" className="text-[var(--line2)]">
                   /
                 </span>
               )}
