@@ -272,3 +272,72 @@ export const professionalService = {
     "BI tool migration",
   ],
 };
+
+/* -------------------------------------------------------------------------- */
+/* Personal brand: Person, Service, FAQ, WebPage                              */
+/* -------------------------------------------------------------------------- */
+
+export const personId = `${siteConfig.url}/#person`;
+
+export const person = {
+  "@type": "Person",
+  "@id": personId,
+  name: siteConfig.legalName,
+  jobTitle: "Full Stack & AI Developer",
+  url: absoluteUrl("/about"),
+  email: siteConfig.email,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Bengaluru",
+    addressRegion: "Karnataka",
+    addressCountry: "IN",
+  },
+  sameAs: [siteConfig.social.linkedin, siteConfig.social.github, siteConfig.social.x],
+};
+
+export function webPageJsonLd(args: { path: string; name: string; description: string }) {
+  const url = absoluteUrl(args.path);
+  return {
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: args.name,
+    description: args.description,
+    inLanguage: "en-US",
+    isPartOf: { "@id": `${siteConfig.url}/#website` },
+    about: { "@id": personId },
+  };
+}
+
+export function serviceJsonLd(args: {
+  path: string;
+  name: string;
+  description: string;
+  serviceType: string;
+  areaServed?: string;
+}) {
+  const url = absoluteUrl(args.path);
+  return {
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: args.name,
+    description: args.description,
+    serviceType: args.serviceType,
+    url,
+    provider: { "@id": personId },
+    areaServed: args.areaServed ?? "Worldwide",
+  };
+}
+
+/** Only for FAQs rendered visibly on the same page. */
+export function faqJsonLd(path: string, items: { q: string; a: string }[]) {
+  return {
+    "@type": "FAQPage",
+    "@id": `${absoluteUrl(path)}#faq`,
+    mainEntity: items.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+}
