@@ -48,7 +48,6 @@ export function AiEngineering() {
             <svg
               viewBox="0 0 380 400"
               width="100%"
-              height="auto"
               role="img"
               aria-label="Architecture diagram: user request enters a Next.js application, passes to an AI orchestrator, which calls an LLM that uses RAG, tools and agents, all backed by a database."
               className="max-w-[420px] block mx-auto lg:mx-0"
