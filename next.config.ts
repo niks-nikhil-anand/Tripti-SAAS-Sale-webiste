@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      // The React service moved to a top-level landing page.
+      { source: "/services/react", destination: "/react-developer", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;
