@@ -29,61 +29,61 @@ export function Footer() {
             </p>
             <div className="grid gap-2 text-[13px]">
               <Link
-                href="/services/react"
+                href="/react-developer"
                 className="text-[var(--dim)] hover:text-[var(--ink)]"
               >
                 React Developer
               </Link>
               <Link
-                href="/hire-me?service=Next.js+development"
+                href="/nextjs-developer"
                 className="text-[var(--dim)] hover:text-[var(--ink)]"
               >
                 Next.js Developer
               </Link>
               <Link
-                href="/hire-me?service=Python+development"
+                href="/python-developer"
                 className="text-[var(--dim)] hover:text-[var(--ink)]"
               >
                 Python Developer
               </Link>
               <Link
-                href="/hire-me?service=AI+development"
+                href="/ai-developer"
                 className="text-[var(--dim)] hover:text-[var(--ink)]"
               >
                 AI Developer
               </Link>
               <Link
-                href="/hire-me?service=Full-stack+development"
+                href="/full-stack-developer"
                 className="text-[var(--dim)] hover:text-[var(--ink)]"
               >
                 Full Stack Developer
               </Link>
               <Link
-                href="/hire-me?service=Node.js+development"
+                href="/nodejs-developer"
                 className="text-[var(--dim)] hover:text-[var(--ink)]"
               >
                 Node.js Developer
               </Link>
               <Link
-                href="/hire-me?service=TypeScript+development"
+                href="/typescript-developer"
                 className="text-[var(--dim)] hover:text-[var(--ink)]"
               >
                 TypeScript Developer
               </Link>
               <Link
-                href="/hire-me?service=AI+automation"
+                href="/automation-development"
                 className="text-[var(--dim)] hover:text-[var(--ink)]"
               >
                 Automation Developer
               </Link>
               <Link
-                href="/hire-me?service=AI+chatbot+development"
+                href="/ai-chatbot-development"
                 className="text-[var(--dim)] hover:text-[var(--ink)]"
               >
                 Chatbot Developer
               </Link>
               <Link
-                href="/hire-me?service=Backend+%26+API+development"
+                href="/api-development"
                 className="text-[var(--dim)] hover:text-[var(--ink)]"
               >
                 Backend & API Developer
@@ -96,10 +96,10 @@ export function Footer() {
               Quick links
             </p>
             <div className="grid gap-2 text-[13px]">
-              <Link href="/#about" className="text-[var(--dim)] hover:text-[var(--ink)]">
+              <Link href="/about" className="text-[var(--dim)] hover:text-[var(--ink)]">
                 About
               </Link>
-              <Link href="/#projects" className="text-[var(--dim)] hover:text-[var(--ink)]">
+              <Link href="/projects" className="text-[var(--dim)] hover:text-[var(--ink)]">
                 Projects
               </Link>
               <Link href="/#insights" className="text-[var(--dim)] hover:text-[var(--ink)]">
