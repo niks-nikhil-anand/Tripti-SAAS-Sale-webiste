@@ -7,16 +7,20 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Eyebrow } from "@/components/ui/Section";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Contact Tripti Shakya",
+  title: "Contact Tripti Shakya – Full Stack & AI Developer",
   description:
     "Contact Tripti Shakya, Full Stack & AI Developer in Bangalore, by email, LinkedIn or GitHub. For project enquiries, use the Hire Me form for a faster reply.",
   path: "/contact",
 });
 
+/** "https://www.linkedin.com/in/x/" -> "linkedin.com/in/x" */
+const displayUrl = (url: string) =>
+  url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+
 const channels = [
   { label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}` },
-  { label: "LinkedIn", value: "linkedin.com/in/triptishakya", href: siteConfig.social.linkedin },
-  { label: "GitHub", value: "github.com/triptishakya", href: siteConfig.social.github },
+  { label: "LinkedIn", value: displayUrl(siteConfig.social.linkedin), href: siteConfig.social.linkedin },
+  { label: "GitHub", value: displayUrl(siteConfig.social.github), href: siteConfig.social.github },
 ];
 
 export default function ContactPage() {
