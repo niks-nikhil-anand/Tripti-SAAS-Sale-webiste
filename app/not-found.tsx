@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
-import { nav } from "@/lib/site";
+import { getPagesByGroup } from "@/lib/content";
+import { Eyebrow } from "@/components/ui/Section";
+import { PageCard } from "@/components/cards/PageCard";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -10,41 +10,45 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
+/** A useful 404: links back into the main hubs instead of a dead end. */
 export default function NotFound() {
+  const popular = getPagesByGroup("developer").slice(0, 4);
   return (
-    <Container className="flex flex-col items-center py-28 text-center sm:py-36">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-        404
-      </p>
-      <h1 className="mt-5 max-w-xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-        That page does not exist
-      </h1>
-      <p className="mt-4 max-w-md text-base leading-7 text-fg-muted">
-        The link may be out of date, or the page may have moved. Here is where
-        everything else lives.
-      </p>
-
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <Button as="a" href="/">
-          Back to home
-        </Button>
-        <Button as="a" href="/blog" variant="secondary">
-          Read the blog
-        </Button>
+    <div className="mx-auto max-w-[1240px] px-4 pb-24 pt-20 sm:px-6 sm:pt-28">
+      <div className="max-w-[640px]">
+        <Eyebrow>404</Eyebrow>
+        <h1 className="text-[34px] leading-[1.08] sm:text-[48px]">That page does not exist</h1>
+        <p className="mt-4 text-[16px] leading-[1.65] text-[var(--dim)]">
+          The link may be out of date, or the page may have moved. These are good places to
+          start.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            href="/"
+            className="inline-flex rounded-full bg-gradient-to-r from-[#4d7cff] to-[#7c5cff] px-6 py-3 text-[15px] font-semibold text-white hover:text-white"
+          >
+            Back to home
+          </Link>
+          <Link
+            href="/projects"
+            className="inline-flex rounded-full border border-[var(--line2)] bg-[var(--glass)] px-6 py-3 text-[15px] font-semibold text-[var(--ink)] hover:text-white"
+          >
+            View projects
+          </Link>
+          <Link
+            href="/blog"
+            className="inline-flex rounded-full border border-[var(--line2)] bg-[var(--glass)] px-6 py-3 text-[15px] font-semibold text-[var(--ink)] hover:text-white"
+          >
+            Read the blog
+          </Link>
+        </div>
       </div>
-
-      <ul className="mt-12 flex flex-wrap justify-center gap-2">
-        {nav.map((item) => (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              className="rounded-lg border border-border bg-surface px-3.5 py-2 text-sm text-fg-muted transition-colors hover:text-fg"
-            >
-              {item.label}
-            </Link>
-          </li>
+      <h2 className="mb-6 mt-16 text-[22px]">Popular services</h2>
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {popular.map((p) => (
+          <PageCard key={p.slug} page={p} />
         ))}
-      </ul>
-    </Container>
+      </div>
+    </div>
   );
 }
