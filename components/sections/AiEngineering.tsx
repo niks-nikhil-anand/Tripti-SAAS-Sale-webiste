@@ -11,11 +11,11 @@ export function AiEngineering() {
 
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
           <div>
-            <p className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.22em] uppercase text-[#7fe6f7] mb-4.5">
+            <p className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.22em] uppercase text-[#7fe6f7] mb-4.5">
               03 — AI engineering
             </p>
 
-            <h2 className="font-['Space_Grotesk'] text-[28px] sm:text-[38px] lg:text-[48px] leading-[1.08] max-w-[20ch] mb-5 text-[var(--ink)]">
+            <h2 className="font-[family-name:var(--h)] text-[28px] sm:text-[38px] lg:text-[48px] leading-[1.08] max-w-[20ch] mb-5 text-[var(--ink)]">
               Building Software With Intelligence Inside.
             </h2>
 
@@ -41,7 +41,7 @@ export function AiEngineering() {
 
           {/* Reference Architecture Diagram SVG */}
           <figure className="m-0">
-            <figcaption className="font-['JetBrains_Mono'] text-[10px] tracking-[0.16em] uppercase text-[var(--faint)] mb-3.5">
+            <figcaption className="font-[family-name:var(--m)] text-[10px] tracking-[0.16em] uppercase text-[var(--faint)] mb-3.5">
               Reference architecture
             </figcaption>
 
