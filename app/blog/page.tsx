@@ -1,105 +1,113 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { formatDate, getAllPosts } from "@/lib/blog";
+import { getActiveCategories, getAllPosts, getPostsByCategory } from "@/lib/blog";
 import {
   blogJsonLd,
   breadcrumbList,
   graph,
-  jsonLdScript,
   pageMetadata,
+  person,
+  webPageJsonLd,
 } from "@/lib/seo";
-import { Container } from "@/components/ui/Container";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { ArrowRightIcon } from "@/components/ui/Icons";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { Eyebrow, H2, Section } from "@/components/ui/Section";
+import { PostCard } from "@/components/blog/PostCard";
+import { AuthorCard } from "@/components/profile/AuthorCard";
+import { HireCta } from "@/components/landing/HireCta";
+
+const title = "Engineering Blog – React, Next.js, Node.js and AI";
+const description =
+  "Technical guides by Tripti Shakya on React, Next.js, Node.js, RAG, LLMs, AI agents and SaaS architecture, drawn from building production applications.";
+
+export const metadata: Metadata = pageMetadata({ title, description, path: "/blog" });
 
 const trail = [
   { name: "Home", path: "/" },
   { name: "Blog", path: "/blog" },
 ];
 
-export const metadata: Metadata = pageMetadata({
-  title: "Blog — product analytics and data engineering",
-  description:
-    "Field notes from the Stackpilot team on semantic layers, warehouse-native analytics, constrained natural-language querying and BI migrations.",
-  path: "/blog",
-});
-
 export default function BlogIndexPage() {
   const posts = getAllPosts();
-  const [lead, ...rest] = posts;
-  const jsonLd = graph(blogJsonLd(posts), breadcrumbList(trail));
+  const featured = posts.filter((p) => p.featured);
+  const cats = getActiveCategories();
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={jsonLdScript(jsonLd)}
+      <JsonLd
+        data={graph(
+          webPageJsonLd({ path: "/blog", name: title, description, type: "CollectionPage" }),
+          blogJsonLd(posts),
+          person,
+          breadcrumbList(trail),
+        )}
       />
 
-      <PageHeader
-        trail={trail}
-        eyebrow="Blog"
-        title="Field notes from building analytics infrastructure"
-        description="What we have learned shipping semantic layers, migrating teams off legacy BI, and keeping a language model from confidently returning the wrong number."
-      />
-
-      <Container className="py-16 sm:py-20">
-        {/* Lead article */}
-        <article className="group ring-gradient relative overflow-hidden rounded-2xl border border-transparent bg-surface p-7 sm:p-10">
-          <div className="flex flex-wrap items-center gap-3 text-xs text-fg-muted">
-            <span className="rounded-full bg-accent-soft px-2.5 py-1 font-semibold text-accent">
-              {lead.category}
-            </span>
-            <time dateTime={lead.publishedAt}>{formatDate(lead.publishedAt)}</time>
-            <span aria-hidden="true">·</span>
-            <span>{lead.readingMinutes} min read</span>
-          </div>
-
-          <h2 className="mt-5 max-w-3xl text-2xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl">
-            <Link href={`/blog/${lead.slug}`} className="after:absolute after:inset-0">
-              {lead.title}
-            </Link>
-          </h2>
-          <p className="mt-4 max-w-2xl text-[1.0625rem] leading-8 text-fg-muted text-pretty">
-            {lead.excerpt}
+      <div className="mx-auto max-w-[1240px] px-4 pt-10 sm:px-6 sm:pt-14">
+        <Breadcrumbs trail={trail} />
+        <div className="mt-8 max-w-[780px]">
+          <Eyebrow>Blog</Eyebrow>
+          <h1 className="text-[34px] leading-[1.06] sm:text-[52px]">
+            Engineering notes from real builds.
+          </h1>
+          <p className="mt-5 text-[16px] leading-[1.65] text-[#cfd7ea] sm:text-[18px]">
+            Practical guides on React, Next.js, Node.js, RAG, LLMs and SaaS architecture,
+            written from the projects I build, with the trade-offs left in.
           </p>
-          <p className="mt-6 flex items-center gap-2 text-sm font-medium text-accent">
-            Read the article
-            <ArrowRightIcon className="size-4 transition-transform duration-200 group-hover:translate-x-1" />
-          </p>
-        </article>
+        </div>
 
-        {/* The rest */}
-        <ul className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {rest.map((post) => (
-            <li key={post.slug}>
-              <article className="group relative flex h-full flex-col rounded-2xl border border-border bg-surface p-6 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-border-strong hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-black/40">
-                <div className="flex flex-wrap items-center gap-2.5 text-xs text-fg-muted">
-                  <span className="rounded-full bg-accent-soft px-2.5 py-1 font-semibold text-accent">
-                    {post.category}
-                  </span>
-                  <time dateTime={post.publishedAt}>
-                    {formatDate(post.publishedAt)}
-                  </time>
-                </div>
-
-                <h2 className="mt-4 text-lg font-semibold leading-snug tracking-tight">
-                  <Link href={`/blog/${post.slug}`} className="after:absolute after:inset-0">
-                    {post.title}
+        {cats.length ? (
+          <nav aria-label="Blog categories" className="mt-8">
+            <ul className="flex flex-wrap gap-2">
+              {cats.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    href={`/blog/${c.slug}`}
+                    className="inline-flex items-center gap-2 rounded-full border border-[var(--line2)] bg-[var(--glass)] px-4 py-2 text-[13.5px] text-[var(--ink)] hover:border-[rgba(77,124,255,0.5)] hover:text-white"
+                  >
+                    {c.name}
+                    <span className="font-[family-name:var(--m)] text-[11px] text-[var(--faint)]">
+                      {getPostsByCategory(c.slug).length}
+                    </span>
                   </Link>
-                </h2>
-                <p className="mt-3 flex-1 text-[0.9375rem] leading-7 text-fg-muted">
-                  {post.excerpt}
-                </p>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
+      </div>
 
-                <p className="mt-6 border-t border-border pt-4 text-xs text-fg-muted">
-                  {post.author.name} · {post.readingMinutes} min read
-                </p>
-              </article>
-            </li>
-          ))}
-        </ul>
-      </Container>
+      {featured.length ? (
+        <Section labelledBy="featured-h">
+          <Eyebrow>Start here</Eyebrow>
+          <H2 id="featured-h">Featured guides</H2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((p) => (
+              <PostCard key={p.slug} post={p} />
+            ))}
+          </div>
+        </Section>
+      ) : null}
+
+      <Section labelledBy="all-h">
+        <Eyebrow>All articles</Eyebrow>
+        <H2 id="all-h">Latest articles</H2>
+        {posts.length ? (
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {posts.map((p) => (
+              <PostCard key={p.slug} post={p} />
+            ))}
+          </div>
+        ) : (
+          <p className="mt-6 text-[var(--dim)]">The first articles are on their way.</p>
+        )}
+      </Section>
+
+      <AuthorCard
+        heading="About the author"
+        text="I write about what I build: production React and Next.js apps, Node.js backends and AI systems. Every article comes from real project work."
+      />
+      <HireCta />
     </>
   );
 }
