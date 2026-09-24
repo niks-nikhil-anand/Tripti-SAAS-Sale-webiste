@@ -18,6 +18,12 @@ export const developerAiPages: LandingPage[] = [
     h1: "JavaScript Developer Who Works Close to the Runtime",
     intro:
       "I write JavaScript with the event loop, the browser platform and the final bundle in mind, so the code that ships is small, predictable and easy to debug when something stalls.",
+    summary: [
+      "I write JavaScript with the event loop in mind, chunking heavy loops or moving CPU work into Web Workers so the page keeps painting and responding.",
+      "Async code handles failure on purpose: AbortController cancels stale requests, request IDs drop late responses, and the Promise combinator is chosen per batch.",
+      "Before adding a dependency I check browser APIs such as IntersectionObserver, ResizeObserver, Streams and Intl, then use bundle analysis to confirm what actually ships.",
+      "Embeddable widgets are built as small vanilla modules with one script tag, Shadow DOM style isolation, origin-checked postMessage and versioned releases.",
+    ],
     highlights: [
       "Event loop and async flow",
       "Browser APIs before libraries",
@@ -219,6 +225,12 @@ export const developerAiPages: LandingPage[] = [
     h1: "Python Developer for FastAPI Services and AI Pipelines",
     intro:
       "I use Python where its ecosystem is strongest, for AI, document processing and data work, and wrap it in FastAPI services with typed contracts so the rest of a JavaScript stack can call it safely.",
+    summary: [
+      "I use Python where its libraries are strongest, such as document processing, OCR, pandas and AI frameworks, and keep user-facing apps, auth and billing in Node.js.",
+      "Services are built with FastAPI, thin routers and dependency injection, and the generated OpenAPI schema feeds a typed TypeScript client for the frontend.",
+      "Async endpoints use non-blocking clients like httpx and asyncpg, while CPU-heavy parsing moves to a process pool or a separate job worker.",
+      "Long document jobs are queued and return an ID immediately, so a Next.js or Node app can poll or subscribe for status instead of waiting.",
+    ],
     highlights: [
       "FastAPI with typed contracts",
       "Async I/O done correctly",
@@ -402,6 +414,12 @@ export const developerAiPages: LandingPage[] = [
     h1: "AI Developer Building LLM Features Into Real Products",
     intro:
       "I build AI features as ordinary software with unusual failure modes: model calls get schemas, timeouts, streaming, logging and fallbacks, and they sit inside a product people actually use.",
+    summary: [
+      "I build four kinds of AI product: conversational interfaces, retrieval apps over private documents, multi-step automation pipelines, and analysis tools with structured output.",
+      "Model calls go through a thin internal interface with adapters for OpenAI, Gemini and OpenRouter, so switching providers becomes a configuration change rather than a refactor.",
+      "When code acts on an answer, I request JSON against a schema and validate it with Zod or Pydantic, while chat replies stream token by token.",
+      "Production readiness means per-user cost tracking, caching of repeated work, prompt injection defences on user content, and an evaluation set rerun before prompts or models change.",
+    ],
     highlights: [
       "OpenAI, Gemini and OpenRouter",
       "RAG with vector databases",
@@ -589,6 +607,12 @@ export const developerAiPages: LandingPage[] = [
     h1: "Generative AI Developer for Reviewed, Repeatable Output",
     intro:
       "Generating one good output is easy. I build the workflow that produces good output on the hundredth run too, with staged prompts, automated checks, human review and a budget it stays inside.",
+    summary: [
+      "I split generation into stages such as research, outline, draft, refine and check, so each stage can be tested, retried or use a different model.",
+      "Prompts live in the repository as versioned templates with typed variables, and every output records which prompt version and model produced it.",
+      "Output is scored on a sample set of real inputs using deterministic checks plus a grader model with a strict rubric whenever a prompt or model changes.",
+      "Anything published under a brand passes a human review screen showing sources and check results, and per-run budgets stop a pipeline that exceeds its cost limit.",
+    ],
     highlights: [
       "Multi-stage generation",
       "Evaluation on real samples",
@@ -768,6 +792,12 @@ export const developerAiPages: LandingPage[] = [
     h1: "LLM Developer for Reliable Model Integrations",
     intro:
       "I work on the layer between your product and the model: which model to call, what context it sees, what shape the answer must take, and what happens when the call is slow, wrong or fails.",
+    summary: [
+      "I compare OpenAI, Gemini and OpenRouter models on your real inputs for quality, latency, price and format compliance, then route each task through configuration.",
+      "Context is treated as a budget, with stable instructions first for prompt caching, labelled retrieved facts, summarised older history and user input kept as data.",
+      "Structured output uses the provider's JSON schema mode plus runtime validation, and tool calls get narrow typed schemas, step limits and logged arguments.",
+      "Calls have timeouts, retries with jitter and fallback models, and an eval suite runs in CI whenever prompts, models or context logic change.",
+    ],
     highlights: [
       "Model routing and fallbacks",
       "Context engineering",
@@ -958,6 +988,12 @@ export const developerAiPages: LandingPage[] = [
     h1: "RAG Developer for Answers Grounded in Your Documents",
     intro:
       "I build retrieval-augmented generation systems where the hard work happens before the model: parsing documents properly, chunking them well, retrieving the right passages and citing them in every answer.",
+    summary: [
+      "I parse documents with layout awareness, run OCR on scanned pages and keep page numbers and section titles attached to every chunk for later citation.",
+      "Chunking follows headings and paragraphs with modest overlap, keeps tables intact as units, and is tuned against real questions rather than a default size.",
+      "Vectors live in Qdrant with tenant and permission metadata, and filters run inside the vector query, followed by hybrid search and re-ranking of candidates.",
+      "Every answer cites the retrieved chunk IDs, says plainly when the documents lack an answer, and retrieval quality is measured separately from generation.",
+    ],
     highlights: [
       "Document parsing and chunking",
       "Qdrant and metadata filters",
@@ -1146,6 +1182,12 @@ export const developerAiPages: LandingPage[] = [
     h1: "AWS Developer for Containerised Apps and Pipelines",
     intro:
       "I deploy web apps and AI services on AWS with Docker, ECS and a few well-chosen managed services, and I will tell you plainly when Vercel alone would serve you better.",
+    summary: [
+      "Vercel is often enough for a Next.js app with short API routes, while AWS fits background workers, long jobs, persistent connections, custom networking and compliance needs.",
+      "My default for services is a slim Docker image in ECR running on ECS with Fargate behind a load balancer, with automatic rollback on failed health checks.",
+      "Pipelines in GitHub Actions or GitLab CI build one image per commit, push it to ECR and deploy the same image to staging and production.",
+      "Each service gets a least-privilege IAM role, CI uses OIDC instead of static keys, and budgets, tags and right-sizing keep costs visible from day one.",
+    ],
     highlights: [
       "Docker, ECR and ECS",
       "S3 and Lambda for the right jobs",
