@@ -12,7 +12,7 @@ export function Marquee() {
         {doubleItems.map((item, index) => (
           <span
             key={`${item}-${index}`}
-            className="inline-flex items-center gap-3 px-6.5 font-['Space_Grotesk'] font-medium text-[15px] text-[#8b95ad] whitespace-nowrap"
+            className="inline-flex items-center gap-3 px-6.5 font-[family-name:var(--h)] font-medium text-[15px] text-[#8b95ad] whitespace-nowrap"
           >
             <span
               aria-hidden="true"
