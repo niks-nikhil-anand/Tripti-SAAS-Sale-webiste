@@ -9,10 +9,9 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         // Crawl budget spent on transactional and parameterised URLs is budget
         // not spent on the pages meant to rank.
-        disallow: ["/api/", "/checkout", "/*?plan=", "/*?utm_"],
+        disallow: ["/api/", "/*?utm_", "/*?service="],
       },
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,
-    host: siteConfig.url,
   };
 }
