@@ -70,6 +70,14 @@ export type LandingPage = {
   h1: string;
   /** hero lede, 1–2 sentences */
   intro: string;
+  /**
+   * 3–4 "Key takeaways" bullets shown near the top: direct, self-contained
+   * answers to the page's main question (what AI overviews and featured
+   * snippets tend to lift).
+   */
+  summary?: string[];
+  /** ISO date the copy was last reviewed; falls back to CONTENT_UPDATED */
+  updatedAt?: string;
   /** 3–4 short hero chips */
   highlights: string[];
   /** optional flow diagram, 4–8 steps rendered with arrows */
