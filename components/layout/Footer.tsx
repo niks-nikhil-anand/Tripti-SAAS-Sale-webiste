@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getPagesByGroup } from "@/lib/content";
 import { siteConfig } from "@/lib/site";
 
 export function Footer() {
@@ -11,10 +12,10 @@ export function Footer() {
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 py-10 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8">
           <div className="sm:col-span-2 md:col-span-1">
-            <p className="font-['Space_Grotesk'] font-bold text-[19px] mb-1 text-[var(--ink)]">
+            <p className="font-[family-name:var(--h)] font-bold text-[19px] mb-1 text-[var(--ink)]">
               TRIPTI.
             </p>
-            <p className="font-['JetBrains_Mono'] text-[9.5px] tracking-[0.24em] text-[var(--faint)] uppercase mb-3.5">
+            <p className="font-[family-name:var(--m)] text-[9.5px] tracking-[0.24em] text-[var(--faint)] uppercase mb-3.5">
               Developer
             </p>
             <p className="text-[13px] leading-[1.65] text-[var(--dim)] max-w-[34ch]">
@@ -24,7 +25,7 @@ export function Footer() {
           </div>
 
           <nav aria-label="Services">
-            <p className="font-['JetBrains_Mono'] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
+            <p className="font-[family-name:var(--m)] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
               Services
             </p>
             <div className="grid gap-2 text-[13px]">
@@ -92,7 +93,7 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Quick links">
-            <p className="font-['JetBrains_Mono'] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
+            <p className="font-[family-name:var(--m)] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
               Quick links
             </p>
             <div className="grid gap-2 text-[13px]">
@@ -102,16 +103,13 @@ export function Footer() {
               <Link href="/projects" className="text-[var(--dim)] hover:text-[var(--ink)]">
                 Projects
               </Link>
-              <Link href="/#insights" className="text-[var(--dim)] hover:text-[var(--ink)]">
-                Insights
-              </Link>
-              <Link href="/#testimonials" className="text-[var(--dim)] hover:text-[var(--ink)]">
-                Testimonials
+              <Link href="/blog" className="text-[var(--dim)] hover:text-[var(--ink)]">
+                Blog
               </Link>
               <Link href="/#faq" className="text-[var(--dim)] hover:text-[var(--ink)]">
                 FAQ
               </Link>
-              <Link href="/#contact" className="text-[var(--dim)] hover:text-[var(--ink)]">
+              <Link href="/contact" className="text-[var(--dim)] hover:text-[var(--ink)]">
                 Contact
               </Link>
               <Link href="/hire-me" className="text-[var(--dim)] hover:text-[var(--ink)]">
@@ -121,18 +119,21 @@ export function Footer() {
           </nav>
 
           <div>
-            <p className="font-['JetBrains_Mono'] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
-              Locations
+            <p className="font-[family-name:var(--m)] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
+              Bangalore
             </p>
-            <div className="grid gap-2 text-[13px] text-[var(--dim)]">
-              <span>Based in Bengaluru</span>
-              <span>Serving clients across India</span>
-              <span>Remote for UAE, UK, US</span>
+            <div className="grid gap-2 text-[13px]">
+              {getPagesByGroup("location").map((p) => (
+                <Link key={p.slug} href={`/${p.slug}`} className="text-[var(--dim)] hover:text-[var(--ink)]">
+                  {p.navLabel}
+                </Link>
+              ))}
+              <span className="text-[var(--faint)]">Remote for India, UAE, UK, US</span>
             </div>
           </div>
 
           <div>
-            <p className="font-['JetBrains_Mono'] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
+            <p className="font-[family-name:var(--m)] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mb-3.5">
               Contact
             </p>
             <div className="grid gap-2 text-[13px]">
@@ -162,8 +163,16 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-[var(--line)] flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px] text-[var(--faint)]">
-          <p>© {new Date().getFullYear()} TRIPTI SHAKYA. All rights reserved.</p>
-          <p className="font-['JetBrains_Mono']">Full-Stack + AI Developer</p>
+          <p>© {new Date().getFullYear()} Tripti Shakya. All rights reserved.</p>
+          <div className="flex items-center gap-5">
+            <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer me" className="text-[var(--dim)] hover:text-[var(--ink)]">
+              GitHub
+            </a>
+            <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer me" className="text-[var(--dim)] hover:text-[var(--ink)]">
+              LinkedIn
+            </a>
+            <span className="font-[family-name:var(--m)]">Full Stack &amp; AI Developer · Bangalore</span>
+          </div>
         </div>
       </div>
     </footer>
