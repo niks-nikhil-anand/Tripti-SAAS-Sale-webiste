@@ -37,26 +37,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--h);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.08;
-  margin: 0;
-}
+/* Layered so Tailwind utilities (mt-*, text-*, leading-*) can override them. */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--h);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+    margin: 0;
+  }
 
-p {
-  margin: 0;
-}
+  p {
+    margin: 0;
+  }
 
-a {
-  color: #a9c0ff;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
+  a {
+    color: #a9c0ff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
 
-a:hover {
-  color: #d6e2ff;
+  a:hover {
+    color: #d6e2ff;
+  }
 }
 
 *:focus-visible {
