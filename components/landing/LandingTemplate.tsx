@@ -5,12 +5,19 @@ import { resolvePages, resolveProjects } from "@/lib/content";
 import {
   breadcrumbList,
   faqJsonLd,
+  CONTENT_UPDATED,
   graph,
   person,
   serviceJsonLd,
   webPageJsonLd,
 } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { getPostsForService } from "@/lib/blog";
+import { AuthorByline } from "@/components/profile/AuthorByline";
+import { PostCard } from "@/components/blog/PostCard";
+import { EngagementSteps } from "./EngagementSteps";
+import { KeyTakeaways } from "./KeyTakeaways";
+import { AuthorCard } from "@/components/profile/AuthorCard";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Eyebrow, H2, Section } from "@/components/ui/Section";
 import { PageCard } from "@/components/cards/PageCard";
@@ -36,9 +43,16 @@ export function LandingTemplate({ page }: { page: LandingPage }) {
   ];
   const projects = resolveProjects(page.projects);
   const related = resolvePages(page.related);
+  const articles = getPostsForService(page.slug, 3);
+  const updatedAt = page.updatedAt ?? CONTENT_UPDATED;
 
   const jsonLd = graph(
-    webPageJsonLd({ path, name: page.metaTitle, description: page.metaDescription }),
+    webPageJsonLd({
+      path,
+      name: page.metaTitle,
+      description: page.metaDescription,
+      dateModified: updatedAt,
+    }),
     serviceJsonLd({
       path,
       name: page.navLabel,
@@ -63,7 +77,7 @@ export function LandingTemplate({ page }: { page: LandingPage }) {
         </div>
         <div className="relative mx-auto max-w-[1240px] px-4 pb-14 pt-10 sm:px-6 sm:pb-20 sm:pt-14">
           <Breadcrumbs trail={trail} />
-          <div className="rv mt-8 max-w-[860px]">
+          <div className="mt-8 max-w-[860px]">
             <Eyebrow>{page.eyebrow}</Eyebrow>
             <h1 className="text-[34px] leading-[1.06] text-[var(--ink)] text-balance sm:text-[52px] lg:text-[60px]">
               {page.h1}
@@ -96,9 +110,18 @@ export function LandingTemplate({ page }: { page: LandingPage }) {
                 View Projects
               </a>
             </div>
+            <div className="mt-8">
+              <AuthorByline label="By" updatedAt={updatedAt} />
+            </div>
           </div>
         </div>
       </header>
+
+      {page.summary?.length ? (
+        <Section className="pt-12 sm:pt-16">
+          <KeyTakeaways items={page.summary} />
+        </Section>
+      ) : null}
 
       {page.diagram ? (
         <Section className="pt-12 sm:pt-16">
@@ -189,12 +212,28 @@ export function LandingTemplate({ page }: { page: LandingPage }) {
         </Section>
       ) : null}
 
+      <EngagementSteps />
+
+      <AuthorCard />
+
       {page.faqs.length ? (
         <Section labelledBy="faq-h">
           <Eyebrow>FAQ</Eyebrow>
           <H2 id="faq-h">Common questions</H2>
           <div className="mt-8">
             <FaqList faqs={page.faqs} />
+          </div>
+        </Section>
+      ) : null}
+
+      {articles.length ? (
+        <Section labelledBy="articles-h">
+          <Eyebrow>From the blog</Eyebrow>
+          <H2 id="articles-h">Related articles</H2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {articles.map((p) => (
+              <PostCard key={p.slug} post={p} />
+            ))}
           </div>
         </Section>
       ) : null}
