@@ -10,7 +10,7 @@ const groups: PageGroup[] = ["developer", "solution", "location"];
  * intent. This is also the main crawl path into the landing pages, so the
  * cards are plain links rendered on the server.
  */
-export function PageDirectory() {
+export function PageDirectory({ showProjects = true }: { showProjects?: boolean }) {
   return (
     <section
       id="explore"
@@ -58,7 +58,7 @@ export function PageDirectory() {
           );
         })}
 
-        {projects.length ? (
+        {showProjects && projects.length ? (
           <div aria-labelledby="explore-projects" role="group">
             <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <h3 id="explore-projects" className="text-[22px] sm:text-[26px]">
