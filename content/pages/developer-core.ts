@@ -16,6 +16,12 @@ export const developerCorePages: LandingPage[] = [
     h1: "React Developer for Fast, Scalable Web Applications",
     intro:
       "I'm Tripti Shakya, a full stack developer in Bengaluru who builds React interfaces in TypeScript: component systems that stay readable, state that stays predictable, and screens that load quickly on real devices.",
+    summary: [
+      "I build React interfaces in TypeScript strict mode, including dashboards, admin panels, customer portals, SaaS front ends, component libraries and refactors of existing apps.",
+      "API data lives in a server cache such as TanStack Query, while Zustand holds only small UI state and shareable filters go into URL search params.",
+      "Performance fixes start from the React Profiler and bundle analysis, then I test on a throttled connection with a mid-range phone profile before shipping.",
+      "An engagement starts with a review of designs or the existing repo and a written plan, then work lands as small pull requests with preview URLs.",
+    ],
     highlights: [
       "React + TypeScript",
       "Zustand and server caching",
@@ -239,6 +245,12 @@ export const developerCorePages: LandingPage[] = [
     h1: "Next.js Developer for Production SaaS on the App Router",
     intro:
       "I build Next.js applications on the App Router, deciding route by route what renders on the server, what gets cached and what needs to run in the browser, then deploying the result to Vercel, Docker or AWS.",
+    summary: [
+      "I build Next.js applications on the App Router, using Server Components by default and adding client components only where state, effects or browser APIs are needed.",
+      "Rendering is chosen per route: static generation for marketing and docs, incremental revalidation for changing listings, and dynamic streaming for per-user dashboards.",
+      "Deployment goes to Vercel with preview URLs per pull request, or to a Docker image on AWS ECS when the app must live in your own account.",
+      "An engagement can start with a call on rendering and client boundaries, and existing pages-router apps migrate to the App Router one route at a time.",
+    ],
     highlights: [
       "App Router and Server Components",
       "SSR, SSG and ISR by route",
@@ -423,6 +435,12 @@ export const developerCorePages: LandingPage[] = [
     h1: "Node.js Developer for APIs, Real-Time Features and Background Jobs",
     intro:
       "I build Node.js services in TypeScript: Express and GraphQL APIs, WebSocket features, job queues, and the Docker images that run them on AWS.",
+    summary: [
+      "I build Node.js services in TypeScript with Express or GraphQL, organised into routes, controllers, services and repositories so each concern has one home.",
+      "Authentication uses short-lived JWT access tokens and rotating refresh tokens in httpOnly cookies, with authorisation checked in the service layer against each record.",
+      "Slow or retryable work such as email, uploads and embeddings runs on BullMQ queues in Redis with retries, backoff, dead letters and idempotent handlers.",
+      "Services ship as multi-stage Docker images to ECR and run on ECS, with GitHub Actions or GitLab CI running tests and rolling out each release.",
+    ],
     highlights: [
       "Express and GraphQL APIs",
       "Socket.io real-time",
@@ -609,6 +627,12 @@ export const developerCorePages: LandingPage[] = [
     h1: "Full Stack Developer Across the Browser, API, Data and Cloud",
     intro:
       "I build every layer of a web product and, just as importantly, the contracts between them: shared types, one auth model and a pipeline that ships frontend and backend together.",
+    summary: [
+      "I build every layer of a web product: React and Next.js in the browser, Node.js APIs, PostgreSQL, MongoDB and Redis, and Docker images on AWS.",
+      "Shared Zod schemas in a monorepo give the frontend and API the same types, so a changed response shape fails type-checking in the same pull request.",
+      "One auth flow covers the stack: the API issues httpOnly cookie tokens that Next.js and the API both verify, and permissions are enforced beside the data.",
+      "One pipeline lints, type-checks, tests and builds every package, with preview environments per pull request and versioned images that make rollback straightforward.",
+    ],
     highlights: [
       "One owner across layers",
       "Shared types end to end",
@@ -804,6 +828,12 @@ export const developerCorePages: LandingPage[] = [
     h1: "Frontend Developer for Accessible, Fast, Well-Built Interfaces",
     intro:
       "I care about the parts of an interface people feel directly: keyboard and screen reader support, layouts that don't jump, motion that clarifies rather than distracts, and a design system that keeps it all consistent.",
+    summary: [
+      "I focus on framework-independent UI engineering: semantic HTML, design systems, accessibility, motion and loading performance, in React, Next.js or Angular codebases.",
+      "Design systems start from tokens as CSS variables mapped into Tailwind, with editable shadcn/ui primitives and composed patterns such as tables and empty states.",
+      "I build toward WCAG 2.2 AA from the start, combining axe scans with manual keyboard and screen reader passes and respecting reduced-motion preferences.",
+      "Core Web Vitals work targets the measured cause: prioritised hero media for LCP, reserved space for CLS, and shorter main-thread tasks for INP.",
+    ],
     highlights: [
       "Design systems and tokens",
       "Accessibility built in",
@@ -991,6 +1021,12 @@ export const developerCorePages: LandingPage[] = [
     h1: "Backend Developer for Well-Modelled Data and Reliable APIs",
     intro:
       "Backend engineering is mostly decisions that outlive the code: how data is modelled, what the API promises, where caches sit and how you find out something broke. I make those decisions in Node.js or Python, whichever suits the job.",
+    summary: [
+      "I start backend work with the data model, mapping entities and the most frequent queries before designing endpoints, indexes, tenant keys and migrations.",
+      "APIs are designed as contracts in OpenAPI, with machine-readable error codes, idempotency keys on create operations and additive changes instead of breaking ones.",
+      "I build services in Node.js for I/O-heavy and real-time APIs, or in Python with FastAPI when the work sits close to data or AI libraries.",
+      "Structured logs, latency and error metrics, tracing and symptom-based alerts ship with the first release, and integration tests run against a real database.",
+    ],
     highlights: [
       "Data modelling first",
       "Node.js and FastAPI",
@@ -1178,6 +1214,12 @@ export const developerCorePages: LandingPage[] = [
     h1: "TypeScript Developer for Strict, Type-Safe Codebases",
     intro:
       "I use TypeScript to make wrong states hard to write: strict compiler settings, runtime validation at every boundary, and types shared between the database, the API and the UI.",
+    summary: [
+      "Every project I start runs TypeScript strict mode plus noUncheckedIndexedAccess, prefers unknown over any, and backs the rules with ESLint instead of reviewer attention.",
+      "Data is parsed with Zod at every boundary, including request bodies, environment variables, webhooks and model output, with the TypeScript type inferred from that schema.",
+      "In a monorepo, a shared package holds the API and event schemas, so the Next.js app, Node.js API and workers all compile against one contract.",
+      "I migrate JavaScript to TypeScript gradually with allowJs, converting API handlers and data access first and raising strictness folder by folder alongside feature work.",
+    ],
     highlights: [
       "Strict mode by default",
       "Zod at every boundary",
