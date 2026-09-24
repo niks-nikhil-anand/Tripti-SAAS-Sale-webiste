@@ -26,6 +26,7 @@ export async function generateMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
     path: `/${page.slug}`,
+    ownImage: true,
   });
 }
 
