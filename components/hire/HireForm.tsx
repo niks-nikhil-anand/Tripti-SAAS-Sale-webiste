@@ -88,14 +88,14 @@ export function HireForm() {
       {/* Left Column Info & Engagement Models */}
       <div className="lg:col-span-5 grid gap-7">
         <div className="border border-[var(--line)] rounded-[var(--r-lg)] bg-[rgba(255,255,255,0.028)] p-6">
-          <h2 className="font-['Space_Grotesk'] font-bold text-[19px] mb-4 text-[var(--ink)]">
+          <h2 className="font-[family-name:var(--h)] font-bold text-[19px] mb-4 text-[var(--ink)]">
             Available Services
           </h2>
           <div className="flex flex-wrap gap-1.75">
             {services.map((s) => (
               <span
                 key={s.id}
-                className="font-['JetBrains_Mono'] text-[11px] px-2.75 py-1.5 border border-[var(--line)] rounded-lg bg-[rgba(255,255,255,0.04)] text-[#c6cfe4]"
+                className="font-[family-name:var(--m)] text-[11px] px-2.75 py-1.5 border border-[var(--line)] rounded-lg bg-[rgba(255,255,255,0.04)] text-[#c6cfe4]"
               >
                 {s.name}
               </span>
@@ -104,7 +104,7 @@ export function HireForm() {
         </div>
 
         <div>
-          <h2 className="font-['Space_Grotesk'] font-bold text-[19px] mb-2 text-[var(--ink)]">
+          <h2 className="font-[family-name:var(--h)] font-bold text-[19px] mb-2 text-[var(--ink)]">
             Engagement Models
           </h2>
           <p className="text-[13px] text-[var(--faint)] mb-4">
@@ -125,10 +125,10 @@ export function HireForm() {
                       : "border-[var(--line)] bg-[rgba(255,255,255,0.02)] hover:border-[var(--line2)]"
                   }`}
                 >
-                  <span className="font-['JetBrains_Mono'] text-[10px] tracking-[0.14em] uppercase text-[#7fe6f7]">
+                  <span className="font-[family-name:var(--m)] text-[10px] tracking-[0.14em] uppercase text-[#7fe6f7]">
                     {m.tag}
                   </span>
-                  <span className="block my-1.5 font-['Space_Grotesk'] font-semibold text-[16px] text-[var(--ink)]">
+                  <span className="block my-1.5 font-[family-name:var(--h)] font-semibold text-[16px] text-[var(--ink)]">
                     {m.name}
                   </span>
                   <span className="block text-[12.5px] leading-[1.5] text-[var(--dim)]">
@@ -141,7 +141,7 @@ export function HireForm() {
         </div>
 
         <div className="border border-[rgba(139,92,246,0.3)] rounded-[var(--r-lg)] bg-[rgba(139,92,246,0.08)] p-5.5">
-          <h2 className="font-['Space_Grotesk'] font-bold text-[17px] mb-2 text-[var(--ink)]">
+          <h2 className="font-[family-name:var(--h)] font-bold text-[17px] mb-2 text-[var(--ink)]">
             Availability & Location
           </h2>
           <p className="text-[13.5px] leading-[1.65] text-[#cfd7ea]">
@@ -161,7 +161,7 @@ export function HireForm() {
         ></div>
 
         <div className="relative">
-          <h2 className="font-['Space_Grotesk'] font-bold text-[24px] sm:text-[30px] mb-2 text-[var(--ink)]">
+          <h2 className="font-[family-name:var(--h)] font-bold text-[24px] sm:text-[30px] mb-2 text-[var(--ink)]">
             Project Brief
           </h2>
           <p className="text-[13.5px] leading-[1.6] text-[var(--dim)] mb-6">
@@ -173,7 +173,7 @@ export function HireForm() {
               <div className="grid gap-1.75">
                 <label
                   htmlFor="h-name"
-                  className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
+                  className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
                 >
                   Name *
                 </label>
@@ -185,7 +185,7 @@ export function HireForm() {
                   value={formData.name}
                   onChange={handleChange}
                   aria-invalid={Boolean(errors.name)}
-                  className={`w-full box-border px-3.5 py-3 min-h-[46px] border rounded-[11px] bg-[rgba(4,6,12,0.5)] text-[var(--ink)] font-['IBM_Plex_Sans'] text-[14.5px] focus:border-[var(--cyan)] outline-none ${
+                  className={`w-full box-border px-3.5 py-3 min-h-[46px] border rounded-[11px] bg-[rgba(4,6,12,0.5)] text-[var(--ink)] font-[family-name:var(--b)] text-[14.5px] focus:border-[var(--cyan)] outline-none ${
                     errors.name ? "border-[#ffb4a8]" : "border-[var(--line2)]"
                   }`}
                 />
@@ -199,7 +199,7 @@ export function HireForm() {
               <div className="grid gap-1.75">
                 <label
                   htmlFor="h-email"
-                  className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
+                  className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
                 >
                   Email *
                 </label>
@@ -211,7 +211,7 @@ export function HireForm() {
                   value={formData.email}
                   onChange={handleChange}
                   aria-invalid={Boolean(errors.email)}
-                  className={`w-full box-border px-3.5 py-3 min-h-[46px] border rounded-[11px] bg-[rgba(4,6,12,0.5)] text-[var(--ink)] font-['IBM_Plex_Sans'] text-[14.5px] focus:border-[var(--cyan)] outline-none ${
+                  className={`w-full box-border px-3.5 py-3 min-h-[46px] border rounded-[11px] bg-[rgba(4,6,12,0.5)] text-[var(--ink)] font-[family-name:var(--b)] text-[14.5px] focus:border-[var(--cyan)] outline-none ${
                     errors.email ? "border-[#ffb4a8]" : "border-[var(--line2)]"
                   }`}
                 />
@@ -225,7 +225,7 @@ export function HireForm() {
               <div className="grid gap-1.75">
                 <label
                   htmlFor="h-company"
-                  className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
+                  className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
                 >
                   Company
                 </label>
@@ -236,14 +236,14 @@ export function HireForm() {
                   autoComplete="organization"
                   value={formData.company}
                   onChange={handleChange}
-                  className="w-full box-border px-3.5 py-3 min-h-[46px] border border-[var(--line2)] rounded-[11px] bg-[rgba(4,6,12,0.5)] text-[var(--ink)] font-['IBM_Plex_Sans'] text-[14.5px] focus:border-[var(--cyan)] outline-none"
+                  className="w-full box-border px-3.5 py-3 min-h-[46px] border border-[var(--line2)] rounded-[11px] bg-[rgba(4,6,12,0.5)] text-[var(--ink)] font-[family-name:var(--b)] text-[14.5px] focus:border-[var(--cyan)] outline-none"
                 />
               </div>
 
               <div className="grid gap-1.75">
                 <label
                   htmlFor="h-phone"
-                  className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
+                  className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
                 >
                   Phone
                 </label>
@@ -254,14 +254,14 @@ export function HireForm() {
                   autoComplete="tel"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full box-border px-3.5 py-3 min-h-[46px] border border-[var(--line2)] rounded-[11px] bg-[rgba(4,6,12,0.5)] text-[var(--ink)] font-['IBM_Plex_Sans'] text-[14.5px] focus:border-[var(--cyan)] outline-none"
+                  className="w-full box-border px-3.5 py-3 min-h-[46px] border border-[var(--line2)] rounded-[11px] bg-[rgba(4,6,12,0.5)] text-[var(--ink)] font-[family-name:var(--b)] text-[14.5px] focus:border-[var(--cyan)] outline-none"
                 />
               </div>
 
               <div className="grid gap-1.75 sm:col-span-2">
                 <label
                   htmlFor="h-service"
-                  className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
+                  className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
                 >
                   Service *
                 </label>
@@ -271,7 +271,7 @@ export function HireForm() {
                   value={formData.service}
                   onChange={handleChange}
                   aria-invalid={Boolean(errors.service)}
-                  className={`w-full box-border px-3.5 py-3 min-h-[46px] border rounded-[11px] bg-[rgba(4,6,12,0.85)] text-[var(--ink)] font-['IBM_Plex_Sans'] text-[14.5px] focus:border-[var(--cyan)] outline-none ${
+                  className={`w-full box-border px-3.5 py-3 min-h-[46px] border rounded-[11px] bg-[rgba(4,6,12,0.85)] text-[var(--ink)] font-[family-name:var(--b)] text-[14.5px] focus:border-[var(--cyan)] outline-none ${
                     errors.service ? "border-[#ffb4a8]" : "border-[var(--line2)]"
                   }`}
                 >
@@ -298,7 +298,7 @@ export function HireForm() {
               <div className="grid gap-1.75">
                 <label
                   htmlFor="h-budget"
-                  className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
+                  className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
                 >
                   Budget
                 </label>
@@ -307,7 +307,7 @@ export function HireForm() {
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  className="w-full box-border px-3.5 py-3 min-h-[46px] border border-[var(--line2)] rounded-[11px] bg-[rgba(4,6,12,0.85)] text-[var(--ink)] font-['IBM_Plex_Sans'] text-[14.5px] focus:border-[var(--cyan)] outline-none"
+                  className="w-full box-border px-3.5 py-3 min-h-[46px] border border-[var(--line2)] rounded-[11px] bg-[rgba(4,6,12,0.85)] text-[var(--ink)] font-[family-name:var(--b)] text-[14.5px] focus:border-[var(--cyan)] outline-none"
                 >
                   <option value="">Prefer to discuss</option>
                   <option value="Under ₹1L / under $1.5k">Under ₹1L / under $1.5k</option>
@@ -320,7 +320,7 @@ export function HireForm() {
               <div className="grid gap-1.75">
                 <label
                   htmlFor="h-timeline"
-                  className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
+                  className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
                 >
                   Timeline
                 </label>
@@ -329,7 +329,7 @@ export function HireForm() {
                   name="timeline"
                   value={formData.timeline}
                   onChange={handleChange}
-                  className="w-full box-border px-3.5 py-3 min-h-[46px] border border-[var(--line2)] rounded-[11px] bg-[rgba(4,6,12,0.85)] text-[var(--ink)] font-['IBM_Plex_Sans'] text-[14.5px] focus:border-[var(--cyan)] outline-none"
+                  className="w-full box-border px-3.5 py-3 min-h-[46px] border border-[var(--line2)] rounded-[11px] bg-[rgba(4,6,12,0.85)] text-[var(--ink)] font-[family-name:var(--b)] text-[14.5px] focus:border-[var(--cyan)] outline-none"
                 >
                   <option value="">Not fixed</option>
                   <option value="ASAP">ASAP</option>
@@ -343,7 +343,7 @@ export function HireForm() {
             <div className="grid gap-1.75">
               <label
                 htmlFor="h-desc"
-                className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
+                className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.14em] uppercase text-[#9aa4bb]"
               >
                 Project description *
               </label>
@@ -354,7 +354,7 @@ export function HireForm() {
                 value={formData.desc}
                 onChange={handleChange}
                 placeholder="What are you building, who uses it, and what has to be true for it to be a success?"
-                className={`w-full box-border p-3.5 border rounded-[11px] bg-[rgba(4,6,12,0.5)] text-[var(--ink)] font-['IBM_Plex_Sans'] text-[14.5px] leading-[1.6] resize-y focus:border-[var(--cyan)] outline-none ${
+                className={`w-full box-border p-3.5 border rounded-[11px] bg-[rgba(4,6,12,0.5)] text-[var(--ink)] font-[family-name:var(--b)] text-[14.5px] leading-[1.6] resize-y focus:border-[var(--cyan)] outline-none ${
                   errors.desc ? "border-[#ffb4a8]" : "border-[var(--line2)]"
                 }`}
               ></textarea>
@@ -368,7 +368,7 @@ export function HireForm() {
             <div className="grid gap-3 pt-2">
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.75 min-h-[50px] border-0 rounded-full font-['Space_Grotesk'] font-semibold text-[15.5px] text-white bg-gradient-to-r from-[#4d7cff] to-[#7c5cff] shadow-[0_18px_44px_-18px_rgba(77,124,255,0.9)] cursor-pointer hover:-translate-y-0.5 transition-all"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.75 min-h-[50px] border-0 rounded-full font-[family-name:var(--h)] font-semibold text-[15.5px] text-white bg-gradient-to-r from-[#4d7cff] to-[#7c5cff] shadow-[0_18px_44px_-18px_rgba(77,124,255,0.9)] cursor-pointer hover:-translate-y-0.5 transition-all"
               >
                 Send Project Brief →
               </button>
@@ -377,7 +377,7 @@ export function HireForm() {
                 href={generateWaText()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 min-h-[50px] border border-[var(--line2)] rounded-full bg-[var(--glass)] font-['Space_Grotesk'] font-semibold text-[15px] text-[var(--ink)] hover:bg-[var(--glass2)] transition-all"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 min-h-[50px] border border-[var(--line2)] rounded-full bg-[var(--glass)] font-[family-name:var(--h)] font-semibold text-[15px] text-[var(--ink)] hover:bg-[var(--glass2)] transition-all"
               >
                 Continue on WhatsApp →
               </a>
