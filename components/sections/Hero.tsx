@@ -1,7 +1,16 @@
 import Link from "next/link";
+import { ProfilePhoto } from "@/components/profile/ProfilePhoto";
 import { heroStack, siteConfig } from "@/lib/site";
+import { getAllPosts } from "@/lib/blog";
+import { projects } from "@/lib/content";
 
 export function Hero() {
+  // Credibility indicators are counted from real content, never typed in.
+  const proof = [
+    `${projects.length} technical case studies`,
+    `${getAllPosts().length} engineering articles`,
+    "Based in Bangalore · IST",
+  ];
   const waUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
     "Hi, I found your website and would like to discuss a development project."
   )}`;
@@ -24,32 +33,32 @@ export function Hero() {
 
       {/* Left Column Content */}
       <div className="relative z-10">
-        <p className="inline-flex items-center gap-2.25 px-3.5 py-1.75 border border-[rgba(34,211,238,0.32)] rounded-full bg-[rgba(34,211,238,0.07)] font-['JetBrains_Mono'] text-[10.5px] tracking-[0.16em] uppercase text-[#7fe6f7] mb-6.5">
+        <p className="inline-flex items-center gap-2.25 px-3.5 py-1.75 border border-[rgba(34,211,238,0.32)] rounded-full bg-[rgba(34,211,238,0.07)] font-[family-name:var(--m)] text-[10.5px] tracking-[0.16em] uppercase text-[#7fe6f7] mb-6.5">
           <span className="dot w-1.75 h-1.75 rounded-full bg-[var(--cyan)] animate-[pulseDot_2.4s_ease-out_infinite]"></span>
           Available for select projects
         </p>
 
-        <h1 className="font-['Space_Grotesk'] font-bold text-[38px] sm:text-[56px] lg:text-[72px] leading-[1.05] tracking-[-0.025em] max-w-[16ch] mb-6 text-[var(--ink)]">
-          I Build Digital Products That <span className="grad-word">Think, Scale</span> &amp; Perform.
+        <h1 className="font-[family-name:var(--h)] font-bold text-[34px] sm:text-[50px] lg:text-[60px] leading-[1.05] tracking-[-0.025em] max-w-[20ch] mb-6 text-[var(--ink)] text-balance">
+          Full Stack &amp; AI Developer building <span className="grad-word">production-ready SaaS</span>, web apps &amp; AI products.
         </h1>
 
         <p className="text-[15.5px] sm:text-[18.5px] leading-[1.65] text-[var(--dim)] max-w-[56ch] mb-10 sm:mb-12">
-          Full-stack developer specializing in React, Next.js, Python and AI — building production-grade applications, intelligent systems and high-performance digital products.
+          I design and build complete products with React, Next.js, Node.js and Python, and the LLM, RAG and agent systems inside them, from architecture to production deploy.
         </p>
 
         <div className="flex flex-wrap items-center gap-4 pt-2">
           <Link
             href="/hire-me"
-            className="inline-flex items-center gap-2.5 px-6.5 py-3.75 rounded-full font-['Space_Grotesk'] font-semibold text-[15.5px] text-white bg-gradient-to-r from-[#4d7cff] to-[#7c5cff] shadow-[0_18px_44px_-18px_rgba(77,124,255,0.9)] hover:shadow-[0_24px_54px_-18px_rgba(124,92,255,1)] hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center gap-2.5 px-6.5 py-3.75 rounded-full font-[family-name:var(--h)] font-semibold text-[15.5px] text-white bg-gradient-to-r from-[#4d7cff] to-[#7c5cff] shadow-[0_18px_44px_-18px_rgba(77,124,255,0.9)] hover:shadow-[0_24px_54px_-18px_rgba(124,92,255,1)] hover:-translate-y-0.5 transition-all"
           >
-            Start a Project →
+            Hire Me →
           </Link>
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2.5 px-6.5 py-3.75 border border-[var(--line2)] rounded-full bg-[var(--glass)] font-['Space_Grotesk'] font-semibold text-[15.5px] text-[var(--ink)] hover:bg-[var(--glass2)] hover:border-[rgba(77,124,255,0.5)] transition-all"
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2.5 px-6.5 py-3.75 border border-[var(--line2)] rounded-full bg-[var(--glass)] font-[family-name:var(--h)] font-semibold text-[15.5px] text-[var(--ink)] hover:bg-[var(--glass2)] hover:border-[rgba(77,124,255,0.5)] transition-all"
           >
-            Explore My Work
-          </a>
+            View Projects
+          </Link>
           <a
             href={waUrl}
             target="_blank"
@@ -64,6 +73,18 @@ export function Hero() {
             or message on WhatsApp
           </a>
         </div>
+
+        <ul
+          aria-label="At a glance"
+          className="mt-8 flex flex-wrap gap-x-5 gap-y-2 font-[family-name:var(--m)] text-[11.5px] tracking-[0.04em] text-[var(--faint)]"
+        >
+          {proof.map((p) => (
+            <li key={p} className="inline-flex items-center gap-2">
+              <span aria-hidden="true" className="size-1 rounded-full bg-[var(--cyan)]" />
+              {p}
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* Right Column Profile Card */}
@@ -75,15 +96,22 @@ export function Hero() {
 
         <div className="relative border border-[var(--line2)] rounded-[var(--r-lg)] bg-[linear-gradient(160deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02))] backdrop-blur-xl shadow-[0_40px_90px_-44px_rgba(0,0,0,0.95)] p-5.5 overflow-hidden">
           <div className="flex items-center justify-between gap-3 pb-4.5 border-b border-[var(--line)]">
+            <div className="flex items-center gap-3.5">
+              <ProfilePhoto
+                size={56}
+                priority
+                className="shrink-0 border border-[var(--line2)] shadow-[0_0_0_4px_rgba(77,124,255,0.12)]"
+              />
             <div>
-              <p className="font-['Space_Grotesk'] font-bold text-[19px] tracking-[0.01em] text-[var(--ink)]">
+              <p className="font-[family-name:var(--h)] font-bold text-[19px] tracking-[0.01em] text-[var(--ink)]">
                 TRIPTI SHAKYA
               </p>
-              <p className="font-['JetBrains_Mono'] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mt-1">
+              <p className="font-[family-name:var(--m)] text-[10px] tracking-[0.18em] uppercase text-[var(--faint)] mt-1">
                 Full-Stack + AI Developer
               </p>
             </div>
-            <span className="font-['JetBrains_Mono'] text-[10px] tracking-[0.14em] text-[#7fe6f7] border border-[rgba(34,211,238,0.3)] rounded-full px-2.5 py-1">
+            </div>
+            <span className="font-[family-name:var(--m)] text-[10px] tracking-[0.14em] text-[#7fe6f7] border border-[rgba(34,211,238,0.3)] rounded-full px-2.5 py-1">
               IST · REMOTE
             </span>
           </div>
@@ -92,7 +120,7 @@ export function Hero() {
             {heroStack.map((tech) => (
               <span
                 key={tech}
-                className="font-['JetBrains_Mono'] text-[11.5px] px-2.75 py-1.5 border border-[var(--line)] rounded-lg bg-[rgba(255,255,255,0.04)] text-[#c6cfe4]"
+                className="font-[family-name:var(--m)] text-[11.5px] px-2.75 py-1.5 border border-[var(--line)] rounded-lg bg-[rgba(255,255,255,0.04)] text-[#c6cfe4]"
               >
                 {tech}
               </span>
@@ -105,11 +133,11 @@ export function Hero() {
               <span className="w-2.25 h-2.25 rounded-full bg-[#3a4258]"></span>
               <span className="w-2.25 h-2.25 rounded-full bg-[#3a4258]"></span>
               <span className="w-2.25 h-2.25 rounded-full bg-[#3a4258]"></span>
-              <span className="font-['JetBrains_Mono'] text-[10.5px] text-[var(--faint)] ml-1.5">
+              <span className="font-[family-name:var(--m)] text-[10.5px] text-[var(--faint)] ml-1.5">
                 developer.ts
               </span>
             </div>
-            <pre className="m-0 p-4 font-['JetBrains_Mono'] text-[12.5px] leading-[1.75] overflow-x-auto text-[#c6cfe4]">
+            <pre className="m-0 p-4 font-[family-name:var(--m)] text-[12.5px] leading-[1.75] overflow-x-auto text-[#c6cfe4]">
               <span className="text-[#8b5cf6]">const</span>{" "}
               <span className="text-[#7fe6f7]">developer</span> = {"{\n"}
               {"  "}frontend: [<span className="text-[#9ae6b4]">"React"</span>,{" "}
