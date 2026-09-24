@@ -5,11 +5,11 @@ export function LocationsServed() {
     <section className="rv max-w-[1240px] mx-auto px-4 sm:px-6 pt-16 sm:pt-24 lg:pt-28">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-13 items-center">
         <div>
-          <p className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.22em] uppercase text-[var(--blue)] mb-4.5">
+          <p className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.22em] uppercase text-[var(--blue)] mb-4.5">
             07 — Locations served
           </p>
 
-          <h2 className="font-['Space_Grotesk'] text-[28px] sm:text-[38px] lg:text-[46px] leading-[1.08] mb-5 text-[var(--ink)]">
+          <h2 className="font-[family-name:var(--h)] text-[28px] sm:text-[38px] lg:text-[46px] leading-[1.08] mb-5 text-[var(--ink)]">
             Based in <span className="grad-word">Bengaluru, India</span>. Working With Teams Worldwide.
           </h2>
 
@@ -23,10 +23,10 @@ export function LocationsServed() {
                 key={idx}
                 className="border border-[var(--line)] border-l-2 border-l-[rgba(77,124,255,0.6)] rounded-[var(--r)] bg-[rgba(255,255,255,0.03)] p-4 sm:p-4.5"
               >
-                <p className="font-['JetBrains_Mono'] text-[10px] tracking-[0.18em] uppercase text-[#7fe6f7] mb-1.75">
+                <p className="font-[family-name:var(--m)] text-[10px] tracking-[0.18em] uppercase text-[#7fe6f7] mb-1.75">
                   {l.kind}
                 </p>
-                <h3 className="font-['Space_Grotesk'] font-bold text-[17px] mb-1.75 text-[var(--ink)]">
+                <h3 className="font-[family-name:var(--h)] font-bold text-[17px] mb-1.75 text-[var(--ink)]">
                   {l.place}
                 </h3>
                 <p className="text-[13px] leading-[1.6] text-[var(--dim)]">
