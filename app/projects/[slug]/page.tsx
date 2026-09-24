@@ -20,6 +20,7 @@ export async function generateMetadata({
     title: project.metaTitle,
     description: project.metaDescription,
     path: `/projects/${project.slug}`,
+    ownImage: true,
   });
 }
 
