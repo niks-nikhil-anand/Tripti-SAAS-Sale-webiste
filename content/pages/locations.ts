@@ -20,6 +20,12 @@ export const locationPages: LandingPage[] = [
     h1: "React developer in Bangalore for product teams in India and overseas",
     intro:
       "I'm Tripti, a React and TypeScript developer working from Bangalore. I build product interfaces for Indian startups and for overseas teams who want a frontend engineer in IST with real overlap for reviews.",
+    summary: [
+      "I'm a React and TypeScript developer in Bangalore building product interfaces for Indian startups and for overseas teams wanting a frontend engineer working in IST.",
+      "For Indian users on mid-range Android phones and patchy mobile data, I keep JavaScript small, split routes, and test on throttled networks and a budget device.",
+      "Razorpay checkout loads only when needed, orders are created on the server, and UPI payments get distinct pending, failed and verified states confirmed by server-side verification.",
+      "Teams in or visiting Bangalore can book an in-person kickoff or component workshop at their office or a co-working space, followed by calls and async preview reviews.",
+    ],
     highlights: [
       "Based in Bangalore, working in IST",
       "In-person design workshops on request",
@@ -197,6 +203,12 @@ export const locationPages: LandingPage[] = [
     h1: "Next.js developer in Bangalore, building for Indian and global audiences",
     intro:
       "I build Next.js App Router applications from Bangalore. For products with Indian users, that means deciding early where servers, databases and functions run, because a render that waits on a database in Virginia feels slow in Chennai.",
+    summary: [
+      "When most users are in India, I run Next.js functions in the Mumbai region and place the database in AWS ap-south-1 so server renders stay local.",
+      "If paying customers are mainly overseas, the primary database follows them, with read replicas, caching or the CDN serving Indian traffic, decided in the first week.",
+      "For DPDP Act needs, I build the technical pieces your counsel specifies, such as Indian-region storage, timestamped consent records and deletion across every system.",
+      "Every pull request gets a preview deploy, and I post the link with notes at the end of my IST day so UK, European or US teams can review.",
+    ],
     highlights: [
       "App Router and server components",
       "Mumbai-region hosting when users are in India",
@@ -370,6 +382,12 @@ export const locationPages: LandingPage[] = [
     h1: "Full stack developer in Bangalore for SaaS built for the Indian market",
     intro:
       "I build complete products from Bangalore: database, API, frontend, payments and deployment. For Indian SaaS, that includes the parts generic tutorials skip, such as Razorpay subscriptions, GST details on invoices and hosting in AWS Mumbai.",
+    summary: [
+      "I build complete Indian SaaS products from Bangalore, covering database, API, frontend, payments and deployment, including Razorpay subscriptions, GST invoice details and AWS Mumbai hosting.",
+      "Razorpay subscription states are modelled explicitly in the database, and access changes only from verified, idempotent webhooks, backed by a scheduled reconciliation job.",
+      "The invoicing module captures a validated GSTIN, uses the billing state for tax split, numbers invoices sequentially and stores frozen copies, with rules supplied by your CA.",
+      "A typical Indian setup runs ECS containers, RDS PostgreSQL, Redis and S3 together in ap-south-1, with GitHub Actions building images and pushing them to ECR.",
+    ],
     highlights: [
       "Razorpay subscriptions and webhooks",
       "GST-aware invoicing flows",
@@ -548,6 +566,12 @@ export const locationPages: LandingPage[] = [
     h1: "AI developer in Bangalore for LLM products, RAG and automation",
     intro:
       "I build AI features into real products from Bangalore: retrieval systems, LLM-powered workflows and agents. For Indian companies, two questions come up early: where user data travels when it hits a model API, and how the system copes with mixed-language input.",
+    summary: [
+      "Before any model call, I map which fields reach which provider and redact names, phone numbers and IDs the task does not need, giving your counsel clear facts.",
+      "Source files, chunks, embeddings and a self-hosted Qdrant instance can all run in AWS ap-south-1 in Mumbai, while only retrieved passages go to the model.",
+      "For Hinglish, Devanagari and mixed-script input, I compare embedding models and LLMs against an evaluation set built from your anonymised real queries before choosing.",
+      "Because model APIs bill in dollars while many products charge in rupees, I cache answers, route simple tasks to smaller models and set per-customer usage limits.",
+    ],
     highlights: [
       "RAG, agents and LLM integrations",
       "Data flow mapped before any model call",
