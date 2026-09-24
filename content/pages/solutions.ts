@@ -22,6 +22,12 @@ export const solutionPages: LandingPage[] = [
     h1: "SaaS development, from idea to a product customers pay for",
     intro:
       "I design and build SaaS products end to end: the tenant model, login and roles, billing, the core workflow your customers pay for, and the infrastructure that keeps it running after launch.",
+    summary: [
+      "I build SaaS products end to end, covering sign-up, workspaces, invitations, role-based access, the core workflow, an admin view and subscription plans that gate features.",
+      "Most early products use a shared PostgreSQL database with a tenant ID on every row, enforced centrally and tested with queries that try to cross tenants.",
+      "A plans and entitlements layer checks features against each workspace's subscription, and Stripe or Razorpay webhooks update it on upgrades, failed payments and cancellations.",
+      "Code, hosting, database and payment accounts are created under your organisation from day one, and a first call narrows your idea into a written, phased scope.",
+    ],
     highlights: [
       "Multi-tenant by design",
       "Auth, roles and billing",
@@ -179,6 +185,12 @@ export const solutionPages: LandingPage[] = [
     h1: "MVP development that tests your idea without painting you into a corner",
     intro:
       "An MVP exists to answer a question, such as whether people will pay for this or use it weekly. I help you decide what that question is, build the smallest product that answers it, and keep the code in a state your next developer can extend.",
+    summary: [
+      "An MVP starts with one written sentence naming the assumption to test, and every proposed feature is judged by whether the test fails without it.",
+      "Settings pages, custom admin screens and extra integrations usually get cut, while real auth, analytics events and backups stay in the first release.",
+      "I agree the key funnel events with you before building, such as signing up and completing a first task, so the launch decision rests on behaviour.",
+      "TypeScript, a relational database with migrations and business logic outside UI components keep version two additive, and handover includes a README and the written cut list.",
+    ],
     highlights: [
       "Scoped around one question",
       "Written cut list",
@@ -324,6 +336,12 @@ export const solutionPages: LandingPage[] = [
     h1: "Web application development for the tools your business runs on",
     intro:
       "Many businesses run on spreadsheets, shared inboxes and a patchwork of SaaS tools that do not talk to each other. I build web applications that replace that patchwork with one system shaped around how your team and customers actually work.",
+    summary: [
+      "I build internal tools, customer portals and operational dashboards that replace spreadsheets, shared inboxes and disconnected tools with one system shaped around your process.",
+      "Requirements come from walking through the current process with the people doing it and are written as scenarios that later become the acceptance checklist.",
+      "The build runs in vertical slices, one complete workflow from database to screen at a time, deployed to staging for your team to try with test data.",
+      "Before launch, users test the scenarios on staging and data migration is rehearsed on a copy, sometimes running alongside the old spreadsheet until totals match.",
+    ],
     highlights: [
       "Internal tools",
       "Customer portals",
@@ -468,6 +486,12 @@ export const solutionPages: LandingPage[] = [
     h1: "API development with contracts your partners can rely on",
     intro:
       "An API is a promise to everyone who builds on it. I design and build APIs for your own apps, for partners, or as a public product, with the documentation, auth, limits and versioning that let other people depend on it safely.",
+    summary: [
+      "I build internal, partner and public APIs, deciding first which kind you need because that sets how much stability, documentation and deprecation policy it requires.",
+      "Partner and public APIs usually get REST with an OpenAPI specification, while GraphQL suits your own frontend when screens need different slices of connected data.",
+      "The schema is written first and generates docs and types, additive changes ship without a version bump, and breaking changes get a new version with a sunset date.",
+      "Callers authenticate with sessions, scoped API keys or OAuth 2.0, rate limits are enforced per key in Redis, and outgoing webhooks are signed and retried.",
+    ],
     highlights: [
       "REST or GraphQL",
       "Versioned contracts",
@@ -611,6 +635,12 @@ export const solutionPages: LandingPage[] = [
     h1: "AI chatbot development for support and internal knowledge",
     intro:
       "A useful chatbot answers from your content, admits when it does not know, and hands the conversation to a person before the customer gets frustrated. I build chatbots that do those three things reliably, then show you what people ask so you can improve over time.",
+    summary: [
+      "I build customer support bots and internal knowledge bots, deciding first which one you need because public and staff-facing bots require different guardrails.",
+      "The bot answers only from your help centre, docs, policies or resolved tickets retrieved at question time, links to the source, and offers a human when nothing fits.",
+      "It escalates to a person on explicit request, low retrieval confidence, detected frustration or sensitive topics like refunds, passing the full transcript and sources along.",
+      "An analytics view shows common and unanswered questions, escalation rate and feedback, and unanswered questions grouped by topic tell your team which articles to write next.",
+    ],
     highlights: [
       "Grounded in your content",
       "Human handoff built in",
@@ -755,6 +785,12 @@ export const solutionPages: LandingPage[] = [
     h1: "RAG application development for asking questions of your documents",
     intro:
       "Your contracts, manuals, reports and policies already hold the answers people keep asking for. I build retrieval-augmented generation applications that let your team or customers ask questions in plain language and get answers with citations back to the exact source page.",
+    summary: [
+      "I build document Q&A applications where authorised users upload or connect files, track processing status, and get answers citing the document name and page.",
+      "Ingestion handles PDFs, Word files, spreadsheets, HTML and scans, chunking by sections and clauses and storing source, page, date and access group with every chunk.",
+      "Retrieval filters by the current user's access groups inside the vector query, and permissions from SharePoint or Google Drive are synced rather than maintained twice.",
+      "Before launch we build a test set of real questions with known answers and sources, then run every change to chunking, prompts or models against it.",
+    ],
     highlights: [
       "Your documents, ingested",
       "Permission-aware retrieval",
@@ -897,6 +933,12 @@ export const solutionPages: LandingPage[] = [
     h1: "AI agent development for tasks that need judgement and tools",
     intro:
       "An AI agent reads a goal, decides which tools to call, looks at the results and keeps going until the task is done. I build agents that act inside your systems with clear limits, human approval where it matters, and a trace of every step they took.",
+    summary: [
+      "I recommend a fixed workflow when the steps are known, and build a true agent only when the path genuinely varies from case to case.",
+      "Each agent tool is a narrow, typed function that runs with the requesting user's permissions, and write tools are marked and gated separately from read-only ones.",
+      "Actions that send messages, spend money, change customer records or delete data pause for human approval, and the run resumes from saved state afterwards.",
+      "Every run has limits on steps, time and tokens, uses idempotent writes, and produces a full trace of model calls, tool calls, approvals, errors and cost.",
+    ],
     highlights: [
       "Tool calling with limits",
       "Human approval steps",
@@ -1036,6 +1078,12 @@ export const solutionPages: LandingPage[] = [
     h1: "AI avatar development for real-time spoken conversations",
     intro:
       "A conversational avatar listens, thinks and replies out loud with a face, fast enough that the exchange feels like talking rather than waiting. I build avatar experiences for interviews, training and onboarding, drawing on my own AI interview avatar project.",
+    summary: [
+      "I build conversational avatars for practice interviews, sales or support training and onboarding, drawing on my AI interview avatar built with Next.js, Node.js, OpenAI and HeyGen.",
+      "Each turn passes through speech-to-text, a language model, text-to-speech and the avatar renderer, with every stage streaming so speech starts on the first complete sentence.",
+      "We agree a latency budget and split it across turn detection, transcription, model response, speech synthesis and avatar start, then measure each stage in production.",
+      "Session cost comes from avatar streaming minutes, speech processing and model tokens, so I estimate cost per session from your target length before building.",
+    ],
     highlights: [
       "Speech in, speech out",
       "Latency budgeted per stage",
@@ -1177,6 +1225,12 @@ export const solutionPages: LandingPage[] = [
     h1: "AI automation development for work your team repeats every week",
     intro:
       "If people on your team copy data between systems, read documents to fill in forms, or produce the same kind of content on a schedule, that work can often become a pipeline. I build AI automation that does the repetitive part and routes the judgement calls to a person.",
+    summary: [
+      "Good automation candidates are frequent, follow a recognisable pattern and have a clear correct result, such as reading supplier invoices into an accounting system.",
+      "I build document extraction, content pipelines, scheduled jobs, webhook reactions and ticket routing, using a language model only where judgement or language is involved.",
+      "Uncertain, high-value or public-facing output waits in a review queue where a person sees input, output and reasoning side by side before approving or correcting.",
+      "Every step saves its output and status, so a failed run resumes where it broke, and jobs run from a Redis queue with retries and schema-checked outputs.",
+    ],
     highlights: [
       "Document extraction",
       "Content pipelines",
