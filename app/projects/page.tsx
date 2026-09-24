@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { projects } from "@/lib/content";
-import { breadcrumbList, graph, pageMetadata, webPageJsonLd } from "@/lib/seo";
+import {
+  breadcrumbList,
+  graph,
+  itemListJsonLd,
+  pageMetadata,
+  person,
+  webPageJsonLd,
+} from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Eyebrow } from "@/components/ui/Section";
@@ -22,13 +29,18 @@ export default function ProjectsPage() {
     <>
       <JsonLd
         data={graph(
-          webPageJsonLd({ path: "/projects", name: title, description }),
+          webPageJsonLd({ path: "/projects", name: title, description, type: "CollectionPage" }),
+          itemListJsonLd(
+            "/projects",
+            projects.map((p) => ({ name: p.title, path: `/projects/${p.slug}` })),
+          ),
+          person,
           breadcrumbList(trail),
         )}
       />
       <div className="mx-auto max-w-[1240px] px-4 pt-10 sm:px-6 sm:pt-14">
         <Breadcrumbs trail={trail} />
-        <div className="rv mt-8 max-w-[760px]">
+        <div className="mt-8 max-w-[760px]">
           <Eyebrow>Case studies</Eyebrow>
           <h1 className="text-[34px] leading-[1.06] sm:text-[52px]">
             Projects, explained from the architecture up.
@@ -38,6 +50,7 @@ export default function ProjectsPage() {
             decisions and trade-offs, and what I would do differently.
           </p>
         </div>
+        <h2 className="sr-only">All case studies</h2>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <ProjectCard key={p.slug} project={p} />
