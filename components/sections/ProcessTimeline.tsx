@@ -3,11 +3,11 @@ import { processTimeline } from "@/lib/site";
 export function ProcessTimeline() {
   return (
     <section className="rv max-w-[1240px] mx-auto px-4 sm:px-6 pt-16 sm:pt-24 lg:pt-28">
-      <p className="font-['JetBrains_Mono'] text-[10.5px] tracking-[0.22em] uppercase text-[var(--blue)] mb-4.5">
+      <p className="font-[family-name:var(--m)] text-[10.5px] tracking-[0.22em] uppercase text-[var(--blue)] mb-4.5">
         05 — Process
       </p>
 
-      <h2 className="font-['Space_Grotesk'] text-[30px] sm:text-[42px] lg:text-[52px] leading-[1.08] max-w-[20ch] mb-11 text-[var(--ink)]">
+      <h2 className="font-[family-name:var(--h)] text-[30px] sm:text-[42px] lg:text-[52px] leading-[1.08] max-w-[20ch] mb-11 text-[var(--ink)]">
         From Discovery to Scale.
       </h2>
 
@@ -20,10 +20,10 @@ export function ProcessTimeline() {
             >
               <span className="absolute -top-[5px] left-0 w-3 h-3 rounded-full bg-[var(--bg)] border-2 border-[var(--blue)] shadow-[0_0_16px_rgba(77,124,255,0.9)]"></span>
             </div>
-            <p className="font-['JetBrains_Mono'] text-[11px] tracking-[0.16em] text-[#7fe6f7] mb-2">
+            <p className="font-[family-name:var(--m)] text-[11px] tracking-[0.16em] text-[#7fe6f7] mb-2">
               {t.n}
             </p>
-            <h3 className="font-['Space_Grotesk'] font-bold text-[17px] tracking-[0.02em] uppercase mb-2.5 text-[var(--ink)]">
+            <h3 className="font-[family-name:var(--h)] font-bold text-[17px] tracking-[0.02em] uppercase mb-2.5 text-[var(--ink)]">
               {t.title}
             </h3>
             <p className="text-[13px] leading-[1.6] text-[var(--dim)] max-w-[30ch]">
