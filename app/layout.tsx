@@ -30,13 +30,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.title,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s | ${siteConfig.legalName}`,
   },
   description: siteConfig.description,
-  keywords: [...siteConfig.keywords],
-  authors: [{ name: siteConfig.name, url: siteConfig.url }],
-  creator: siteConfig.name,
-  publisher: siteConfig.name,
+  applicationName: siteConfig.legalName,
+  authors: [{ name: siteConfig.legalName, url: `${siteConfig.url}/about` }],
+  creator: siteConfig.legalName,
+  publisher: siteConfig.legalName,
+  category: "technology",
+  formatDetection: { telephone: false, email: false, address: false },
   alternates: {
     canonical: "/",
   },
@@ -56,7 +58,18 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+  // Add the Search Console token via env when the domain is verified.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export const viewport: Viewport = {
