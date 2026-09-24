@@ -5,10 +5,10 @@
 export const siteConfig = {
   name: "TRIPTI SHAKYA",
   legalName: "Tripti Shakya",
-  title: "TRIPTI SHAKYA — Full-Stack + AI Developer",
+  title: "Tripti Shakya – Full Stack & AI Developer in Bangalore",
   tagline: "I Build Digital Products That Think, Scale & Perform.",
   description:
-    "Full-stack developer specializing in React, Next.js, Python and AI — building production-grade applications, intelligent systems and high-performance digital products.",
+    "Full Stack & AI Developer building production-ready SaaS, web applications and AI products with React, Next.js, Node.js, Python, LLMs and RAG.",
   shortDescription:
     "Full-stack developer specializing in React, Next.js, Python & AI.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://triptishakya.dev",
@@ -29,12 +29,10 @@ export const siteConfig = {
   phone: "+91 62014 14631",
   location: "Bengaluru, India (IST)",
   whatsappNumber: "916201414631",
-  twitterHandle: "@triptishakya",
   founded: "2022",
   social: {
-    x: "https://x.com/triptishakya",
-    linkedin: "https://linkedin.com/in/triptishakya",
-    github: "https://github.com/triptishakya",
+    linkedin: "https://www.linkedin.com/in/tripti-shakya-602097281/",
+    github: "https://github.com/triptishakya-dev",
   },
 } as const;
 
@@ -251,8 +249,8 @@ export const projects = [
 export const whyHireMeReasons = [
   {
     n: "01",
-    t: "Senior Execution",
-    b: "Direct engagement with the senior engineer writing your code. No middle management friction, bloated handoffs, or junior oversight.",
+    t: "Direct Engagement",
+    b: "You work with the engineer writing your code, from scoping to deploy. No account managers, hand-offs or layers between your questions and the answers.",
   },
   {
     n: "02",
@@ -261,13 +259,13 @@ export const whyHireMeReasons = [
   },
   {
     n: "03",
-    t: "Measurable Results",
-    b: "Performance audits with documented before-and-after benchmarks. Focus on Core Web Vitals, page speed, and clean maintenance.",
+    t: "Measured, Not Claimed",
+    b: "Performance work starts with a baseline and ends with the same measurement, so you see what changed. Core Web Vitals, API latency and LLM cost are tracked, not guessed.",
   },
   {
     n: "04",
     t: "Transparent Cadence",
-    b: "Daily asynchronous updates, clear progress metrics, clean pull requests, and committed working-hours overlap for your team.",
+    b: "Regular written updates, working preview deploys, reviewable pull requests and agreed overlap hours with your team.",
   },
 ];
 
@@ -295,7 +293,7 @@ export const processTimeline = [
   {
     n: "05",
     title: "Production Launch",
-    body: "Deploy to production infrastructure with monitoring, error tracking, and zero downtime.",
+    body: "Deploy to production infrastructure with monitoring, error tracking and a rollback plan.",
   },
   {
     n: "06",
@@ -318,7 +316,7 @@ export const locationCards = [
   {
     kind: "Remote development for",
     place: "Dubai · London",
-    body: "High working-hours overlap with IST. Seamless asynchronous updates and remote contract execution.",
+    body: "Good working-hours overlap with IST, with written async updates between calls.",
   },
   {
     kind: "Remote development for",
@@ -384,7 +382,7 @@ export const homeFaqs = [
   },
   {
     q: "What is your availability for new engagements?",
-    a: "Currently accepting select projects for Q4 2026. Submitting a project brief guarantees a detailed response and preliminary technical breakdown within 24 hours.",
+    a: "I take on a limited number of projects at a time so each gets proper attention. Send a brief through the Hire Me page and I will reply with questions and a suggested approach.",
   },
   {
     q: "How do you handle time-zone differences for international clients?",
@@ -426,7 +424,7 @@ export const reactFaqs = [
 export const hireFaqs = [
   {
     q: "How fast can we start a project after initial contact?",
-    a: "Following brief submission, we hold a 30-minute technical scope call within 24-48 hours. Engineering work usually commences within 3 to 7 days.",
+    a: "After you send a brief, I review it and reply with questions and a suggested next step, usually a short technical call. The start date depends on scope and my current commitments, and I will be upfront about it.",
   },
   {
     q: "What contract formats do you support?",
@@ -438,7 +436,7 @@ export const hireFaqs = [
   },
   {
     q: "What happens if our requirements change mid-project?",
-    a: "We maintain agile flexibility. Any scope adjustments are documented with clear impact on timeline and budget before work proceeds.",
+    a: "Changes are expected. Each one is written down with its effect on timeline and budget, and agreed before work on it starts.",
   },
 ];
 
