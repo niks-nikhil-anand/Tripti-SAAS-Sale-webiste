@@ -1,70 +1,54 @@
 import type { Block } from "@/lib/blog";
+import { InlineText } from "./InlineText";
 
-/**
- * Renders the structured body into real semantic HTML — h2/h3 with stable ids,
- * ul/ol, blockquote, pre. Crawlers get a parseable outline and the on-page
- * table of contents can link straight into it.
- */
+/** Turns parsed blocks into semantic HTML inside the article. */
 export function PostBody({ blocks }: { blocks: Block[] }) {
   return (
-    <div className="flex flex-col gap-6">
-      {blocks.map((block, i) => {
-        switch (block.type) {
+    <div className="text-[16.5px] leading-[1.8] text-[#c9d1e2]">
+      {blocks.map((b, i) => {
+        switch (b.type) {
           case "h2":
             return (
               <h2
                 key={i}
-                id={block.id}
-                className="mt-6 scroll-mt-28 text-2xl font-semibold tracking-tight"
+                id={b.id}
+                className="mb-4 mt-12 scroll-mt-28 text-[26px] leading-[1.2] text-[var(--ink)] sm:text-[30px]"
               >
-                {block.text}
+                {b.text}
               </h2>
             );
           case "h3":
             return (
               <h3
                 key={i}
-                id={block.id}
-                className="mt-4 scroll-mt-28 text-xl font-semibold tracking-tight"
+                id={b.id}
+                className="mb-3 mt-8 scroll-mt-28 text-[20px] leading-[1.3] text-[var(--ink)]"
               >
-                {block.text}
+                {b.text}
               </h3>
             );
           case "p":
             return (
-              <p key={i} className="text-[1.0625rem] leading-8 text-fg-muted">
-                {block.text}
+              <p key={i} className="my-5">
+                <InlineText text={b.text} />
               </p>
             );
           case "ul":
             return (
-              <ul key={i} className="flex flex-col gap-2.5 pl-1">
-                {block.items.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-[1.0625rem] leading-8 text-fg-muted"
-                  >
-                    <span aria-hidden="true" className="mt-3 size-1.5 shrink-0 rounded-full bg-accent" />
-                    <span>{item}</span>
+              <ul key={i} className="my-5 list-disc space-y-2 pl-6 marker:text-[var(--blue)]">
+                {b.items.map((it, j) => (
+                  <li key={j}>
+                    <InlineText text={it} />
                   </li>
                 ))}
               </ul>
             );
           case "ol":
             return (
-              <ol key={i} className="flex flex-col gap-2.5 pl-1">
-                {block.items.map((item, n) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-[1.0625rem] leading-8 text-fg-muted"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="mt-1.5 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-accent-soft text-xs font-semibold text-accent"
-                    >
-                      {n + 1}
-                    </span>
-                    <span>{item}</span>
+              <ol key={i} className="my-5 list-decimal space-y-2 pl-6 marker:text-[var(--faint)]">
+                {b.items.map((it, j) => (
+                  <li key={j}>
+                    <InlineText text={it} />
                   </li>
                 ))}
               </ol>
@@ -73,24 +57,24 @@ export function PostBody({ blocks }: { blocks: Block[] }) {
             return (
               <blockquote
                 key={i}
-                className="border-l-2 border-accent bg-surface-2 py-4 pl-5 pr-4 text-[1.0625rem] italic leading-8"
+                className="my-7 border-l-2 border-[var(--blue)] bg-[rgba(77,124,255,0.06)] py-3 pl-5 pr-4 italic text-[#dbe2f2]"
               >
-                {block.text}
-                {block.cite ? (
-                  <cite className="mt-2 block text-sm not-italic text-fg-muted">
-                    — {block.cite}
-                  </cite>
-                ) : null}
+                <InlineText text={b.text} />
               </blockquote>
             );
           case "code":
             return (
-              <pre
+              <figure
                 key={i}
-                className="overflow-x-auto rounded-xl border border-border bg-surface-2 p-4 text-[0.8125rem] leading-6"
+                className="my-7 overflow-hidden rounded-[var(--r)] border border-[var(--line)] bg-[rgba(4,6,12,0.85)]"
               >
-                <code className="font-mono">{block.code}</code>
-              </pre>
+                <figcaption className="border-b border-[var(--line)] px-4 py-2 font-[family-name:var(--m)] text-[10.5px] uppercase tracking-[0.16em] text-[var(--faint)]">
+                  {b.lang}
+                </figcaption>
+                <pre className="overflow-x-auto p-4 font-[family-name:var(--m)] text-[13px] leading-[1.7] text-[#d3dbee]">
+                  <code>{b.code}</code>
+                </pre>
+              </figure>
             );
         }
       })}
@@ -98,35 +82,29 @@ export function PostBody({ blocks }: { blocks: Block[] }) {
   );
 }
 
-/** Section links built from the body's own headings — no duplicate source of truth. */
+/** Contents list built from the h2 blocks. */
 export function TableOfContents({ blocks }: { blocks: Block[] }) {
   const headings = blocks.filter(
-    (b): b is Extract<Block, { type: "h2" | "h3" }> =>
-      b.type === "h2" || b.type === "h3",
+    (b): b is Extract<Block, { type: "h2" }> => b.type === "h2",
   );
-
-  if (headings.length < 2) return null;
-
+  if (headings.length < 3) return null;
   return (
-    <nav aria-labelledby="toc-heading" className="rounded-2xl border border-border bg-surface p-5">
-      <h2
-        id="toc-heading"
-        className="text-xs font-semibold uppercase tracking-[0.16em] text-fg-muted"
-      >
+    <nav aria-label="Table of contents">
+      <p className="mb-3 font-[family-name:var(--m)] text-[10.5px] uppercase tracking-[0.2em] text-[var(--faint)]">
         On this page
-      </h2>
-      <ul className="mt-4 flex flex-col gap-2.5">
+      </p>
+      <ol className="space-y-2 border-l border-[var(--line)] text-[13px]">
         {headings.map((h) => (
-          <li key={h.id} className={h.type === "h3" ? "pl-4" : undefined}>
+          <li key={h.id}>
             <a
               href={`#${h.id}`}
-              className="text-sm leading-6 text-fg-muted transition-colors hover:text-accent"
+              className="-ml-px block border-l border-transparent pl-3 leading-[1.45] text-[var(--dim)] hover:border-[var(--blue)] hover:text-[var(--ink)]"
             >
               {h.text}
             </a>
           </li>
         ))}
-      </ul>
+      </ol>
     </nav>
   );
 }
