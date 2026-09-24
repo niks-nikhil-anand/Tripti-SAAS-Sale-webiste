@@ -15,12 +15,11 @@ export function FloatingWhatsApp() {
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 transition-transform duration-200 hover:scale-110 active:scale-95 drop-shadow-[0_10px_25px_rgba(37,211,102,0.4)]"
     >
       <Image
-        src="/whatsapp (1).png"
-        alt="WhatsApp"
+        src="/whatsapp.png"
+        alt=""
         width={56}
         height={56}
         className="w-full h-full object-contain"
-        priority
       />
     </a>
   );
