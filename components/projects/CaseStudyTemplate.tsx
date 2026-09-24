@@ -2,8 +2,19 @@ import Link from "next/link";
 import { ImageIcon } from "lucide-react";
 import type { CaseStudy } from "@/types/content";
 import { pagesFeaturingProject, resolvePages } from "@/lib/content";
-import { breadcrumbList, graph, person, webPageJsonLd } from "@/lib/seo";
+import {
+  breadcrumbList,
+  caseStudyJsonLd,
+  CONTENT_UPDATED,
+  graph,
+  person,
+  webPageJsonLd,
+} from "@/lib/seo";
+import { AuthorByline } from "@/components/profile/AuthorByline";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { getPostsForProject } from "@/lib/blog";
+import { PostCard } from "@/components/blog/PostCard";
+import { AuthorCard } from "@/components/profile/AuthorCard";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Eyebrow, H2, Section } from "@/components/ui/Section";
 import { TechBadge } from "@/components/ui/TechBadge";
@@ -57,12 +68,20 @@ export function CaseStudyTemplate({ project }: { project: CaseStudy }) {
       ...pagesFeaturingProject(project.slug).map((p) => p.slug),
     ]),
   ]).slice(0, 8);
+  const articles = getPostsForProject(project.slug);
 
   return (
     <>
       <JsonLd
         data={graph(
           webPageJsonLd({ path, name: project.metaTitle, description: project.metaDescription }),
+          caseStudyJsonLd({
+            path,
+            headline: project.title,
+            description: project.metaDescription,
+            keywords: project.stack,
+            dateModified: CONTENT_UPDATED,
+          }),
           person,
           breadcrumbList(trail),
         )}
@@ -75,7 +94,7 @@ export function CaseStudyTemplate({ project }: { project: CaseStudy }) {
         />
         <div className="relative mx-auto max-w-[1240px] px-4 pb-14 pt-10 sm:px-6 sm:pb-20 sm:pt-14">
           <Breadcrumbs trail={trail} />
-          <div className="rv mt-8 max-w-[860px]">
+          <div className="mt-8 max-w-[860px]">
             <Eyebrow>{project.category}</Eyebrow>
             <h1 className="text-[34px] leading-[1.06] text-balance sm:text-[52px] lg:text-[60px]">
               {project.title}
@@ -90,6 +109,9 @@ export function CaseStudyTemplate({ project }: { project: CaseStudy }) {
                 </li>
               ))}
             </ul>
+            <div className="mt-8">
+              <AuthorByline label="Built and written up by" updatedAt={CONTENT_UPDATED} />
+            </div>
           </div>
         </div>
       </header>
@@ -193,6 +215,11 @@ export function CaseStudyTemplate({ project }: { project: CaseStudy }) {
         </ul>
       </Block>
 
+      <AuthorCard
+        heading="Built by"
+        text="I designed and built this project end to end: architecture, backend, frontend and deployment."
+      />
+
       {relatedPages.length ? (
         <Block id="related" eyebrow="Related" heading="Related services">
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -203,6 +230,16 @@ export function CaseStudyTemplate({ project }: { project: CaseStudy }) {
           <p className="mt-6 text-[14px] text-[var(--dim)]">
             More builds: <Link href="/projects">all case studies</Link>.
           </p>
+        </Block>
+      ) : null}
+
+      {articles.length ? (
+        <Block id="articles" eyebrow="Further reading" heading="Related articles">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {articles.map((p) => (
+              <PostCard key={p.slug} post={p} />
+            ))}
+          </div>
         </Block>
       ) : null}
 
